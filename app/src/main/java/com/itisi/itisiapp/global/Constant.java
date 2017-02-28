@@ -6,7 +6,7 @@ package com.itisi.itisiapp.global;
  */
 public interface Constant {
     /**
-     * 请求
+     * 请求地址
      */
     interface URL{
         //**************************干货***********************************//
@@ -25,5 +25,13 @@ public interface Constant {
         //*******************我们自己服务器的****************************//
         String BaseURL_My="http://itisi.com/api/";
 
+    }
+
+    /**
+     *
+     */
+    interface RESUESTCODE{
+
+        int PERMISSIONS_REQUEST_READ_CONTACTS=1;
     }
 }
