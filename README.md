@@ -38,4 +38,6 @@
     // 从顶部掉下来的菜单效果 https://github.com/Yalantis/GuillotineMenu-Android
     //compile 'com.github.Yalantis:GuillotineMenu-Android:1.2'
     //日志打印 https://github.com/orhanobut/logger
+    相册选择/图片选择 照相机 裁剪
+    https://github.com/YancyYe/GalleryPick
 
