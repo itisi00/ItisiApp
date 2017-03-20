@@ -37,8 +37,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setStatusBarColor() {
-        super.setStatusBarColor();
-//        StatusBarUtil.setColor(this, Color.parseColor("#45d4d8"),0);
+//        super.setStatusBarColor();
+//        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
     }
 
     /**
@@ -50,19 +50,19 @@ public class MainActivity extends BaseActivity {
 //        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
         //        mDrawer.setAlpha(0.5f);
         //        mDrawer.setTouchBezelSize(1);
-                mDrawer.setFitsSystemWindows(true);
+//                mDrawer.setFitsSystemWindows(true);
         //侧滑菜单 滑动监听
         mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
             @Override
             public void onDrawerStateChange(int oldState, int newState) {
                 if (newState == ElasticDrawer.STATE_CLOSED) {
-                    Logger.i("Drawer STATE_CLOSED");
+//                    Logger.i("Drawer STATE_CLOSED");
                 }
             }
 
             @Override
             public void onDrawerSlide(float openRatio, int offsetPixels) {
-                Logger.i("openRatio:"+openRatio+"==="+"offsetPixels:"+offsetPixels);
+//                Logger.i("openRatio:"+openRatio+"==="+"offsetPixels:"+offsetPixels);
             }
         });
 

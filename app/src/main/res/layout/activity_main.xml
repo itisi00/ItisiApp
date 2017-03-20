@@ -8,7 +8,8 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    app:edMenuBackground="#eeeeee"
+    android:fitsSystemWindows="true"
+    app:edMenuBackground="#6a55ce"
     app:edMenuSize="260dp"
     app:edPosition="1"
     >
@@ -26,10 +27,14 @@
         android:background="@color/colorAccent"
         android:fitsSystemWindows="true"
         >
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:src="@mipmap/fuck"
+        />
         <TextView
             android:id="@+id/tv_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:text="app main"/>
 
         <Button
@@ -54,7 +59,6 @@
             android:id="@+id/iv_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
             android:clipToPadding="true"
             android:src="@mipmap/ic_launcher"
             />

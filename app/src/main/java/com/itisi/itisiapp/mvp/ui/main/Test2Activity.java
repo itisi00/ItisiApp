@@ -1,10 +1,7 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
-import android.graphics.Color;
-
 import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.mvp.ui.base.BaseActivity;
-import com.jaeger.library.StatusBarUtil;
 
 public class Test2Activity extends BaseActivity {
 
