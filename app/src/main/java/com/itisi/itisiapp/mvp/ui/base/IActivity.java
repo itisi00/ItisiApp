@@ -1,4 +1,4 @@
-package com.itisi.itisiapp.ui.base;
+package com.itisi.itisiapp.mvp.ui.base;
 
 /**
  * 也不知道有没有用  先搞起

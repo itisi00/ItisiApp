@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorContent2"
-    tools:context="com.itisi.itisiapp.ui.main.TestSwipeBackActivity">
+    tools:context=".mvp.ui.main.TestSwipeBackActivity">
 
     <!--android:fitsSystemWindows="true"-->
     <!--android:clipToPadding="false"-->
@@ -20,16 +20,16 @@
         android:id="@+id/tv_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="textswipe"
         android:layout_below="@id/iv_fuck"
+        android:text="textswipe"
         />
 
 
     <Button
-        android:layout_below="@id/tv_test"
         android:id="@+id/btn_toast2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_test"
         android:text="testapp"
         />
 </RelativeLayout>

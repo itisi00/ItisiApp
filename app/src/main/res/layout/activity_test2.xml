@@ -5,10 +5,10 @@
     android:id="@+id/activity_test2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="true"
     android:background="@color/colorContent3"
-    tools:context="com.itisi.itisiapp.ui.main.Test2Activity">
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    tools:context=".mvp.ui.main.Test2Activity">
 
 
 </RelativeLayout>
