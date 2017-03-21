@@ -3,6 +3,7 @@ package com.itisi.itisiapp.mvp.ui.base;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.itisi.itisiapp.mvp.rx.RxBus;
 import com.jaeger.library.StatusBarUtil;
 import com.orhanobut.logger.Logger;
 
@@ -22,7 +23,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements IActivit
         super.onCreate(savedInstanceState);
 
         setContentView(getlayoutId());
-        initBase();
+        init();
         initData();
         setStatusBarColor();//设置状态栏
     }
@@ -34,7 +35,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements IActivit
     /**
      * 初始化
      */
-    private void initBase() {
+    private void init() {
         mSwipeBackLayout = getSwipeBackLayout();
         //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
@@ -52,6 +53,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements IActivit
 
         ButterKnife.bind(this);//初始化 ButterKnife
         Logger.init(); //初始化日志
+
 
     }
     /**

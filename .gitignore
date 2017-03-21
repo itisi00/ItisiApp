@@ -8,5 +8,6 @@ local.properties
 build/
 /build
 app/build/
+app/*.apk
 /captures
 .externalNativeBuild

@@ -1,10 +1,10 @@
-package com.itisi.itisiapp.global;
+package com.itisi.itisiapp.app;
 
 /**
  * 常量
  * Created by Administrator on 2017/2/23.
  */
-public interface Constant {
+public interface Constants {
 
 //    /**
 //     *

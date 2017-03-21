@@ -9,14 +9,32 @@ dependencies {
 }
 
 android {
+    signingConfigs {
+        itisiapp {
+            keyAlias 'itisiapp'
+            keyPassword 'itisiapp.00'
+            storeFile file('F:/_itisi/itisi_img/itisiapp.jks')
+            storePassword 'itisiapp.00'
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion '25.0.0'
-
     defaultConfig {
         minSdkVersion 7
         targetSdkVersion 22
         versionCode 1
         versionName "1.0.0"
+        signingConfig signingConfigs.itisiapp
+    }
+    productFlavors {
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.itisiapp
+        }
+        release {
+            signingConfig signingConfigs.itisiapp
+        }
     }
 }
 
