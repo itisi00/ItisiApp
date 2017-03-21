@@ -46,7 +46,7 @@ public class RxBus {
     /**
      * 发布者
      */
-    protected Subject mBus;
+    protected Subject bus;
     /**
      * 添加序列
      * 根据object 生成唯一 id
@@ -55,15 +55,15 @@ public class RxBus {
     /**
      * 存放订阅者信息
      */
-    private Map<Object, CompositeDisposable> subscriptions = new HashMap<>();
-
+    protected Map<Object, CompositeDisposable> subscriptions = new HashMap<>();
     /**
-     * 单列嘛  先改为私有的
+     * 单列嘛  先改为私有的 ===不能私有化?
+     * PublishSubject 创建一个可以在订阅之后把数据传输给订阅者Subject
+     * SerializedSubject 序列化Subject为线程安全的Subject RxJava2 暂无
      */
-    private RxBus() {
-        mBus = PublishSubject.create().toSerialized();
+    public RxBus() {
+        bus = PublishSubject.create().toSerialized();
     }
-
     public static RxBus getInstance() {
         if (instance == null) {
             synchronized (RxBus.class) {
@@ -74,7 +74,6 @@ public class RxBus {
         }
         return instance;
     }
-
     /**
      * 发送消息 默认事件
      *
@@ -83,7 +82,6 @@ public class RxBus {
     public void post(@NonNull Object obj) {
         post(TAG_DEFAULT, obj);
     }
-
     /**
      * 指定事件标记 发送事件
      *
@@ -91,9 +89,8 @@ public class RxBus {
      * @param obj 需要携带的消息内容
      */
     public void post(@NonNull int tag, @NonNull Object obj) {
-        mBus.onNext(new Msg(tag, obj));
+        bus.onNext(new Msg(tag, obj));
     }
-
     /**
      * 订阅事件
      *
@@ -102,7 +99,6 @@ public class RxBus {
     public Observable<Object> toObservable() {
         return toObservable(Object.class);
     }
-
     /**
      * 订阅事件
      *
@@ -113,7 +109,6 @@ public class RxBus {
     public <T> Observable<T> toObservable(Class<T> eventType) {
         return toObservable(TAG_DEFAULT, eventType);
     }
-
     /**
      * 订阅事件
      *
@@ -123,14 +118,12 @@ public class RxBus {
      * @return
      */
     public <T> Observable<T> toObservable(final int tag, Class<T> eventType) {
-        return mBus.ofType(Msg.class)//判断接受事件类型
+        return bus.ofType(Msg.class)//判断接受事件类型
                 .filter(new Predicate<Msg>() {
                     @Override
                     public boolean test(@NonNull Msg msg) throws Exception {
                         return msg.tag == tag;
                     }
-
-
                 })
                 .map(new Function<Msg, Object>() {
                     @Override
@@ -140,7 +133,6 @@ public class RxBus {
                 })
                 .cast(eventType);
     }
-
     /**
      * 判断是否需要订阅,如果需要订阅那么自动控制什么周期
      *
@@ -174,7 +166,6 @@ public class RxBus {
                     }
                 });
     }
-
     /**
      * 订阅者注册
      *
@@ -215,7 +206,6 @@ public class RxBus {
                     }
                 });
     }
-
     /**
      * 添加订阅
      *
@@ -250,7 +240,6 @@ public class RxBus {
         //放进map集合
         putSubscriptionsData(subscriber, disposable);
     }
-
     /**
      * 添加订阅者到map中  用来取消订阅
      *
@@ -265,12 +254,10 @@ public class RxBus {
         subs.add(disposable);
         subscriptions.put(subscriber, subs);
     }
-
     protected void addTag4Class(Class cla) {
         tag4Class.put(cla, tag);
         tag--;
     }
-
     /**
      * tag值 使用RxBus.getInstance().getTag(class,value)获取
      * 使用getTag主要用于后期维护方便,可以解释找到发布事情的对应处理
@@ -282,7 +269,6 @@ public class RxBus {
     public int getTag(Class cla, int value) {
         return tag4Class.get(cla).intValue() + value;
     }
-
     /**
      * 接触订阅者
      *
