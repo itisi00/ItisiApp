@@ -1,9 +1,16 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
-import com.itisi.itisiapp.R;
-import com.itisi.itisiapp.mvp.ui.base.BaseActivity;
+import android.view.View;
 
-public class Test2Activity extends BaseActivity {
+import com.itisi.itisiapp.R;
+import com.itisi.itisiapp.mvp.rx.RxBus;
+import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
+import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
+
+import java.util.Date;
+
+@UseRxBus
+public class Test2Activity extends BaseRxBusActivity {
 
 
     @Override
@@ -11,9 +18,12 @@ public class Test2Activity extends BaseActivity {
         return R.layout.activity_test2;
     }
 
-    @Override
-    public void setStatusBarColor() {
-        super.setStatusBarColor();
-
+    /**
+     * 发送事件
+     * @param view
+     */
+    public void btnPost(View view){
+        RxBus.getInstance().post(RxBus.getInstance().getTag(MainActivity.class,RxBus.TAG_UPDATE),new Date().toString());
     }
+
 }

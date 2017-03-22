@@ -10,7 +10,7 @@ import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.mvp.rx.RxBus;
 import com.itisi.itisiapp.mvp.rx.annotation.Subscribe;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
-import com.itisi.itisiapp.mvp.ui.base.BaseActivity;
+import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
 import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 
@@ -22,7 +22,7 @@ import butterknife.OnClick;
  * 参考架构 http://www.jianshu.com/p/cdcc9bef5ea0
  */
 @UseRxBus
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseRxBusActivity {
 
     @BindView(R.id.drawerlayout)
     protected FlowingDrawer mDrawer;
@@ -42,12 +42,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int getlayoutId() {
+        //透明状态栏 如果开启的话 内容会延伸到状态栏
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         return R.layout.activity_main;
     }
 
     @Override
     public void setStatusBarColor() {
-//        super.setStatusBarColor();
+        super.setStatusBarColor();
 //        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
     }
 
@@ -86,11 +88,8 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
     @Subscribe(tag= RxBus.TAG_UPDATE)
     private void testRxBus(String txt){
-
-
         if (!TextUtils.isEmpty(txt)){
             tv_main.setText(txt);
         }

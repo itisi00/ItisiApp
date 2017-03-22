@@ -38,30 +38,30 @@ public class RxBus {
     public static final int TAG_CHANGE = -1020;
     public static final int TAG_OTHER = -1030;
     public static final int TAG_ERROR = -1090;
-    protected static RxBus instance;
+    private static RxBus instance;
     /**
      * tagClass
      */
-    protected static Map<Class, Integer> tag4Class = new HashMap<>();
+    private static Map<Class, Integer> tag4Class = new HashMap<>();
     /**
      * 发布者
      */
-    protected Subject bus;
+    private Subject bus;
     /**
      * 添加序列
      * 根据object 生成唯一 id
      */
-    protected Integer tag = -1000;
+    private Integer tag = -1000;
     /**
      * 存放订阅者信息
      */
-    protected Map<Object, CompositeDisposable> subscriptions = new HashMap<>();
+    private  Map<Object, CompositeDisposable> subscriptions = new HashMap<>();
     /**
      * 单列嘛  先改为私有的 ===不能私有化?
      * PublishSubject 创建一个可以在订阅之后把数据传输给订阅者Subject
      * SerializedSubject 序列化Subject为线程安全的Subject RxJava2 暂无
      */
-    public RxBus() {
+    private RxBus() {
         bus = PublishSubject.create().toSerialized();
     }
     public static RxBus getInstance() {
@@ -96,7 +96,7 @@ public class RxBus {
      *
      * @return
      */
-    public Observable<Object> toObservable() {
+    private Observable<Object> toObservable() {
         return toObservable(Object.class);
     }
     /**
@@ -106,7 +106,7 @@ public class RxBus {
      * @param <T>
      * @return
      */
-    public <T> Observable<T> toObservable(Class<T> eventType) {
+    private <T> Observable<T> toObservable(Class<T> eventType) {
         return toObservable(TAG_DEFAULT, eventType);
     }
     /**
@@ -117,7 +117,7 @@ public class RxBus {
      * @param <T>
      * @return
      */
-    public <T> Observable<T> toObservable(final int tag, Class<T> eventType) {
+    private <T> Observable<T> toObservable(final int tag, Class<T> eventType) {
         return bus.ofType(Msg.class)//判断接受事件类型
                 .filter(new Predicate<Msg>() {
                     @Override
@@ -138,31 +138,33 @@ public class RxBus {
      *
      * @param object
      */
-    public void init(@NonNull Object object) {
+    public void init(@NonNull final Object object) {
         Flowable.just(object)
-                .map(new Function<Object, Object>() {
+                .map(new Function<Object, UseRxBus>() {
                     @Override
-                    public Object apply(@NonNull Object o) throws Exception {
+                    public UseRxBus apply(@NonNull Object o) throws Exception {
                         return o.getClass().getAnnotation(UseRxBus.class);
                     }
                 })
-                .filter(new Predicate<Object>() {
+                .filter(new Predicate<UseRxBus>() {
                     @Override
-                    public boolean test(@NonNull Object o) throws Exception {
+                    public boolean test(@NonNull UseRxBus o) throws Exception {
                         return o != null;
                     }
                 })
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(@NonNull Object o) throws Exception {
-                        addTag4Class(o.getClass());
-                        register(o);
+                        addTag4Class(object.getClass()); //这里根本不是传递进来的 o 而是:
+                        //如果能走到这里 则说明 原始的object是满足要求的!!! 所以  害死人了
+                        register(object);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(@NonNull Throwable throwable) throws Exception {
                         throwable.printStackTrace();
-                        Logger.e(throwable, "订阅事件 初始化方法出错la ");
+
+                        Logger.e(throwable, "订阅事件,初始化方法出错,也不算错,只是调用了rxbus.init方法,但没有加注解而已@UseRxBus ");
                     }
                 });
     }
@@ -171,7 +173,7 @@ public class RxBus {
      *
      * @param subscriber 订阅者
      */
-    public void register(@NonNull final Object subscriber) {
+    private void register(@NonNull final Object subscriber) {
         Flowable.just(subscriber)
                 .filter(new Predicate<Object>() {
                     @Override
@@ -212,7 +214,7 @@ public class RxBus {
      * @param m          方法
      * @param subscriber 订阅者
      */
-    protected void addSubscription(final Method m, final Object subscriber) {
+    private void addSubscription(final Method m, final Object subscriber) {
         //获取方法内参数
         Class[] parameterType = m.getParameterTypes();
         //只获取第一个方法参数 否则默认为Object
@@ -246,7 +248,7 @@ public class RxBus {
      * @param subscriber 订阅者
      * @param disposable 订阅者 的 Subscription
      */
-    protected void putSubscriptionsData(Object subscriber, Disposable disposable) {
+    private void putSubscriptionsData(Object subscriber, Disposable disposable) {
         CompositeDisposable subs = subscriptions.get(subscriber);
         if (subs == null) {
             subs = new CompositeDisposable();
@@ -254,7 +256,7 @@ public class RxBus {
         subs.add(disposable);
         subscriptions.put(subscriber, subs);
     }
-    protected void addTag4Class(Class cla) {
+    private void addTag4Class(Class cla) {
         tag4Class.put(cla, tag);
         tag--;
     }
@@ -274,6 +276,7 @@ public class RxBus {
      *
      * @param subscriber
      */
+
     public void unRegister(final Object subscriber) {
         Flowable.just(subscriber)
                 .filter(new Predicate<Object>() {
