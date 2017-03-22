@@ -1,6 +1,7 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import com.itisi.itisiapp.mvp.rx.RxBus;
 import com.itisi.itisiapp.mvp.rx.annotation.Subscribe;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
+import com.jaeger.library.StatusBarUtil;
 import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 
@@ -50,7 +52,7 @@ public class MainActivity extends BaseRxBusActivity {
     @Override
     public void setStatusBarColor() {
         super.setStatusBarColor();
-//        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
+        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
     }
 
     /**
@@ -77,8 +79,6 @@ public class MainActivity extends BaseRxBusActivity {
 //                Logger.i("openRatio:"+openRatio+"==="+"offsetPixels:"+offsetPixels);
             }
         });
-
-
     }
 
     @OnClick(R.id.btn_toast)

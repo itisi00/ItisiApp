@@ -10,8 +10,14 @@
     android:fitsSystemWindows="true"
     tools:context=".mvp.ui.main.Test2Activity">
 
-    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:onClick="btnPost"
+    <ImageView
+        android:id="@+id/iv_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    android:layout_below="@id/iv_test"
+            android:onClick="btnPost"
             android:text="rxbus post"
     />
 
