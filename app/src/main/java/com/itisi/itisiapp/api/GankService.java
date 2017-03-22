@@ -12,7 +12,7 @@ import retrofit2.http.Path;
 /**
  * author: itisi---
  * created by Administrator on 2017/3/22.
- * desc:
+ * desc: 干货api
  */
 
 public interface GankService {

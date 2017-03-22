@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.itisi.itisiapp.api.APPURL;
 import com.itisi.itisiapp.api.GankService;
+import com.itisi.itisiapp.app.Constants;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.orhanobut.logger.Logger;
 
@@ -26,10 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitFactory {
-    /**
-     * 网络连接超时 读取超时 时长 30s
-     */
-    private static final long TIMEOUT=30;
+
 
     /**
      * Retrofit是基于OkHttpClient的，可以创建一个OkHttpClient进行一些配置
@@ -58,8 +56,8 @@ public class RetrofitFactory {
             })
                     .setLevel(HttpLoggingInterceptor.Level.BASIC)
             )
-            .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(TIMEOUT,TimeUnit.SECONDS)
+            .connectTimeout(Constants.CONNECT_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(Constants.READ_TIMEOUT,TimeUnit.SECONDS)
             .build();
 
     /**
