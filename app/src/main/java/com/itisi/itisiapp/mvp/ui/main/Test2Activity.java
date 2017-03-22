@@ -4,34 +4,24 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.itisi.itisiapp.R;
-import com.itisi.itisiapp.mvp.model.entity.BaseGankEntity;
-import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
-import com.itisi.itisiapp.mvp.model.net.BaseObserver;
-import com.itisi.itisiapp.mvp.model.net.RetrofitFactory;
-import com.itisi.itisiapp.mvp.rx.RxBus;
-import com.itisi.itisiapp.mvp.rx.RxSchedulerHelper;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
-import com.orhanobut.logger.Logger;
-
-import java.util.Date;
-import java.util.List;
+import com.itisi.itisiapp.utils.ClickTree;
 
 import butterknife.BindView;
-import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 
 @UseRxBus
 public class Test2Activity extends BaseRxBusActivity {
 
     @BindView(R.id.iv_test)
     protected ImageView iv_test;
+    //多次点击事件
+    ClickTree mClickTree=new ClickTree(3);
 
     @Override
     public int getlayoutId() {
         return R.layout.activity_test2;
     }
-
 
     /**
      * 发送事件
@@ -43,20 +33,26 @@ public class Test2Activity extends BaseRxBusActivity {
 //        ImageLoadProxy.getInstance().load(new ImageLoadConfiguration.Builder(this).url(url)
 //        .isCircle(true).defaultImageResId(R.mipmap.ic_launcher).isGray(true).imageView(iv_test).build());
         //事件总线
-        RxBus.getInstance().post(RxBus.getInstance().getTag(MainActivity.class,RxBus.TAG_UPDATE),new Date().toString());
+       // RxBus.getInstance().post(RxBus.getInstance().getTag(MainActivity.class,RxBus.TAG_UPDATE),new Date().toString());
         //网络请求
-        Observable<BaseGankEntity<List<GankFuLiEntity>>> observable = RetrofitFactory.getGankService().gank("福利", 10, 1);
-        observable.compose(RxSchedulerHelper.<BaseGankEntity<List<GankFuLiEntity>>>io_main())
-                .subscribe(new BaseObserver<List<GankFuLiEntity>>(Test2Activity.this) {
-                    @Override
-                    protected void onHandleSuccess(List<GankFuLiEntity> gankFuLiEntities) {
-                        Logger.i(gankFuLiEntities.size()+"");
-                    }
-                    @Override
-                    public void onSubscribe(Disposable d) {
+//        Observable<BaseGankEntity<List<GankFuLiEntity>>> observable = RetrofitFactory.getGankService().gank("福利", 10, 1);
+//        observable.compose(RxSchedulerHelper.<BaseGankEntity<List<GankFuLiEntity>>>io_main())
+//                .subscribe(new BaseObserver<List<GankFuLiEntity>>(Test2Activity.this) {
+//                    @Override
+//                    protected void onHandleSuccess(List<GankFuLiEntity> gankFuLiEntities) {
+//                        Logger.i(gankFuLiEntities.size()+"");
+//                    }
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//                });
 
-                    }
-                });
+        //多次点击 事件 点击树
+//       boolean res= mClickTree.completeClickCount();
+//        Logger.i(res+"");
+
+
     }
 
 }
