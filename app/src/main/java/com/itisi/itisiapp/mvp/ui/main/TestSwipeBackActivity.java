@@ -43,6 +43,7 @@ public class TestSwipeBackActivity extends BaseRxBusActivity {
     @OnClick(R.id.btn_toast2)
     public void test(View view) {
         startActivity(new Intent(TestSwipeBackActivity.this,Test2Activity.class));
+        overridePendingTransition(R.anim.bottom_in,R.anim.top_out);
     }
 
     @Override

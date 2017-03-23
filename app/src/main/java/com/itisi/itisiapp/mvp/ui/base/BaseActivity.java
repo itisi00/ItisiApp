@@ -2,6 +2,7 @@ package com.itisi.itisiapp.mvp.ui.base;
 
 import android.os.Bundle;
 
+import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.app.ItisiApp;
 import com.itisi.itisiapp.di.component.ActivityComponent;
 import com.itisi.itisiapp.di.component.DaggerActivityComponent;
@@ -115,4 +116,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         }
         mUnbinder.unbind();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(0, R.anim.scale_out);
+    }
+
 }

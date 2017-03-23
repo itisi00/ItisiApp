@@ -63,4 +63,12 @@ public class Test2Activity extends BaseRxBusActivity<MainPresenter> implements M
     public void showError(String msg) {
         TastyToast.makeText(this,msg,TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+
 }
