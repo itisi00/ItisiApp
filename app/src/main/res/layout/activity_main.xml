@@ -10,7 +10,7 @@
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
     app:edMenuBackground="#6a55ce"
-    app:edMenuSize="260dp"
+    app:edMenuSize="@dimen/dimen_260"
     app:edPosition="1"
     >
     <!-- android:clipChildren="false" 这个属性是不限制子控件在其范围内-->
@@ -24,17 +24,14 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
         >
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:src="@mipmap/fuck"
-        />
+
         <TextView
             android:id="@+id/tv_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
             android:text="app main"/>
 
         <Button
@@ -54,15 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
-        <ImageView
-            android:id="@+id/iv_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clipToPadding="true"
-            android:src="@mipmap/ic_launcher"
-            />
-
+      <include layout="@layout/left_menu" />
     </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
 
 </com.mxn.soul.flowingdrawer_core.FlowingDrawer>

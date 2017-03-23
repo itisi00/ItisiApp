@@ -18,9 +18,9 @@ public class ImageLoadConfiguration {
      */
     public ImageView mImageView;
     /**
-     * 图片地址
+     * 图片地址 不只是的地址 也可以是 缓存文件 也可是资源id 所以该Object 类型
      */
-    public String mUrl;
+    public Object mUrl;
     /**
      * 占位图片 默认图片地址
      */
@@ -63,7 +63,7 @@ public class ImageLoadConfiguration {
     public static class Builder{
         private Context mContext;
         private ImageView mImageView;
-        private String mUrl;
+        private Object mUrl;
         private int defaultImageResId;
         private boolean isCircle;
         private boolean isGray;
@@ -79,10 +79,16 @@ public class ImageLoadConfiguration {
          * @param url 图片地址
          * @return
          */
-        public Builder url(String url) {
+        public Builder url(Object url) {
             mUrl = url;
             return this;
         }
+
+//        public Builder url(int resId) {
+//            mUrl = url;
+//            return this;
+//        }
+
 
         /**
          * 设置占位图片 默认显示的图片

@@ -12,6 +12,8 @@ import com.itisi.itisiapp.mvp.rx.RxBus;
 import com.itisi.itisiapp.mvp.rx.annotation.Subscribe;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
+import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
+import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
 import com.jaeger.library.StatusBarUtil;
 import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
@@ -28,12 +30,13 @@ public class MainActivity extends BaseRxBusActivity {
 
     @BindView(R.id.drawerlayout)
     protected FlowingDrawer mDrawer;
-    @BindView(R.id.iv_header)
-    protected ImageView iv_header;
+
 
     @BindView(R.id.tv_main)
     protected TextView tv_main;
 
+    @BindView(R.id.iv_userheader)
+    protected ImageView iv_userHeader;
 
 
     @Override
@@ -50,13 +53,13 @@ public class MainActivity extends BaseRxBusActivity {
     @Override
     public int getConentlayout() {
         //透明状态栏 如果开启的话 内容会延伸到状态栏
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         return R.layout.activity_main;
     }
 
     @Override
     public void setStatusBarColor() {
-        super.setStatusBarColor();
+//        super.setStatusBarColor();
         StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
     }
 
@@ -88,9 +91,7 @@ public class MainActivity extends BaseRxBusActivity {
 
     @OnClick(R.id.btn_toast)
     public void test(View view) {
-       // RxBus.getInstance().post(RxBus.getInstance().getTag(TestSwipeBackActivity.class,RxBus.TAG_UPDATE),"from rxbus post");
         startActivity(new Intent(MainActivity.this,TestSwipeBackActivity.class));
-
     }
 
     @Subscribe(tag= RxBus.TAG_UPDATE)
@@ -105,6 +106,14 @@ public class MainActivity extends BaseRxBusActivity {
 
     @Override
     public void showError(String msg) {
+
+    }
+
+    @Override
+    protected void initData() {
+
+        ImageLoadProxy.getInstance().load(new ImageLoadConfiguration.Builder(this).url(R.mipmap.ic_launcher)
+                        .isCircle(true).defaultImageResId(R.mipmap.ic_launcher).imageView(iv_userHeader).build());
 
     }
 }

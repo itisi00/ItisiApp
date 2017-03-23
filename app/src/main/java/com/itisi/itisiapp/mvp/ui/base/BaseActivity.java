@@ -105,7 +105,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
      * 初始化数据---如果需要加载数据 则去加载数据
      */
     protected void initData() {
-
     }
 
     @Override

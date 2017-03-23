@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="#ccc"
+                    android:paddingLeft="@dimen/dimen_15"
+                    android:paddingTop="@dimen/dimen_80"
+    >
+
+        <ImageView
+            android:id="@+id/iv_userheader"
+            android:layout_width="@dimen/dimen_40"
+            android:layout_height="@dimen/dimen_40"
+        />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="@dimen/dimen_180"
+            android:layout_height="@dimen/dimen_40"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_toRightOf="@id/iv_userheader"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="itisiitisiitisi"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/txtsize_30"
+        />
+    </RelativeLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+    >
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:paddingLeft="@dimen/dimen_15"
+        >
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州1"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州2"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州3"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州4"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州5"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州6"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州7"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州8"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州9"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州10"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州11"
+                      android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:text="大贵州12"
+                      android:textSize="20sp"
+            />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>
