@@ -43,7 +43,12 @@ public class MainActivity extends BaseRxBusActivity {
     }
 
     @Override
-    public int getlayoutId() {
+    protected void initInject() {
+
+    }
+
+    @Override
+    public int getConentlayout() {
         //透明状态栏 如果开启的话 内容会延伸到状态栏
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         return R.layout.activity_main;
@@ -98,4 +103,8 @@ public class MainActivity extends BaseRxBusActivity {
         }
     }
 
+    @Override
+    public void showError(String msg) {
+
+    }
 }

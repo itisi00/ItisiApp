@@ -7,11 +7,13 @@ import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
 import com.itisi.itisiapp.utils.ClickTree;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import butterknife.BindView;
 
 @UseRxBus
-public class Test2Activity extends BaseRxBusActivity {
+public class Test2Activity extends BaseRxBusActivity<MainPresenter> implements MainContract.View {
+
 
     @BindView(R.id.iv_test)
     protected ImageView iv_test;
@@ -19,10 +21,14 @@ public class Test2Activity extends BaseRxBusActivity {
     ClickTree mClickTree=new ClickTree(3);
 
     @Override
-    public int getlayoutId() {
+    protected void initInject() {
+
+        getActivityComponent().inject(this);
+    }
+    @Override
+    public int getConentlayout() {
         return R.layout.activity_test2;
     }
-
     /**
      * 发送事件
      * @param view
@@ -51,8 +57,10 @@ public class Test2Activity extends BaseRxBusActivity {
         //多次点击 事件 点击树
 //       boolean res= mClickTree.completeClickCount();
 //        Logger.i(res+"");
-
-
+        mPresenter.getData();
     }
-
+    @Override
+    public void showError(String msg) {
+        TastyToast.makeText(this,msg,TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+    }
 }

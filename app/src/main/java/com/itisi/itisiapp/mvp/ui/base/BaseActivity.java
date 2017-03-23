@@ -2,15 +2,26 @@ package com.itisi.itisiapp.mvp.ui.base;
 
 import android.os.Bundle;
 
+import com.itisi.itisiapp.app.ItisiApp;
+import com.itisi.itisiapp.di.component.ActivityComponent;
+import com.itisi.itisiapp.di.component.DaggerActivityComponent;
+import com.itisi.itisiapp.di.modeule.ActivityModule;
 import com.jaeger.library.StatusBarUtil;
 import com.orhanobut.logger.Logger;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
-public abstract class BaseActivity extends SwipeBackActivity implements IActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackActivity  implements BaseView {
+
     protected SwipeBackLayout mSwipeBackLayout;
+    @Inject
+    protected P mPresenter; //对应的presenter
+    private Unbinder mUnbinder;//buterknife 绑定的对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,22 +31,45 @@ public abstract class BaseActivity extends SwipeBackActivity implements IActivit
         //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         super.onCreate(savedInstanceState);
 
-        setContentView(getlayoutId());
-        init();
-        setStatusBarColor();//设置状态栏
+        setContentView(getConentlayout());
+        //初始化 ButterKnife
+        mUnbinder = ButterKnife.bind(this);
+        Logger.init(); //初始化日志
 
-        initData();
+        initSwipeBack();//初始化 侧滑返回
+        initInject();//dagger2 注入
+        if (mPresenter!=null){
+            mPresenter.attachView(this);
+        }
+        setStatusBarColor();//设置状态栏
+        initData();//初始化 数据
+    }
+
+    /**
+     * 注入
+     */
+    protected abstract void initInject();
+
+    protected ActivityComponent getActivityComponent(){
+        return DaggerActivityComponent.builder()
+                .appComponent(ItisiApp.getAppComponent())
+                .activityModule(getActivityModule())
+                .build();
+    }
+
+    private ActivityModule getActivityModule() {
+        return new ActivityModule(this);
     }
 
     /**
      * 加载布局文件
      * @return
      */
-    public abstract int getlayoutId();
+    public abstract int getConentlayout();
     /**
      * 初始化
      */
-    private void init() {
+    private void initSwipeBack() {
         mSwipeBackLayout = getSwipeBackLayout();
         //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
@@ -50,8 +84,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements IActivit
         //            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
         //        }
         //        Log.e("WangJ", "状态栏-方法1:" + statusBarHeight1);
-        ButterKnife.bind(this);//初始化 ButterKnife
-        Logger.init(); //初始化日志
+
     }
     /**
      * 设置状态栏颜色 默认就是透明的
@@ -74,4 +107,12 @@ public abstract class BaseActivity extends SwipeBackActivity implements IActivit
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter!=null){
+            mPresenter.detachView();
+        }
+        mUnbinder.unbind();
+    }
 }

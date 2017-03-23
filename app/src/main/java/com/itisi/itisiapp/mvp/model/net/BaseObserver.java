@@ -34,8 +34,7 @@ public abstract class BaseObserver<T> implements Observer<BaseGankEntity<T>> {
 
     @Override
     public void onError(Throwable e) {
-        Logger.e(e, "onError");
-
+        Logger.e(e, "有错了 ^-^ :");
     }
 
     @Override

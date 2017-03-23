@@ -19,8 +19,14 @@ public class TestSwipeBackActivity extends BaseRxBusActivity {
 
     @BindView(R.id.tv_test)
     protected TextView tv_test;
+
     @Override
-    public int getlayoutId() {
+    protected void initInject() {
+
+    }
+
+    @Override
+    public int getConentlayout() {
       return   R.layout.activity_test_swipe_back;
 
     }
@@ -39,4 +45,8 @@ public class TestSwipeBackActivity extends BaseRxBusActivity {
         startActivity(new Intent(TestSwipeBackActivity.this,Test2Activity.class));
     }
 
+    @Override
+    public void showError(String msg) {
+
+    }
 }

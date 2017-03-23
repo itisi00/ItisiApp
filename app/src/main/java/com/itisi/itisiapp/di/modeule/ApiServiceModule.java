@@ -1,7 +1,11 @@
 package com.itisi.itisiapp.di.modeule;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.itisi.itisiapp.BuildConfig;
 import com.itisi.itisiapp.api.APPURL;
+import com.itisi.itisiapp.api.GankService;
 import com.itisi.itisiapp.app.Constants;
 import com.itisi.itisiapp.utils.SystemUtil;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -33,6 +37,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiServiceModule {
 
     /**
+     * 自定义的GSON 解析
+     * @return
+     */
+    private static Gson buildGson(){
+        return new GsonBuilder()
+                .serializeNulls()
+                .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+                //                .registerTypeAdapter()
+                .create();
+    }
+
+    /**
      * retrofit builder
      * @return
      */
@@ -41,10 +57,13 @@ public class ApiServiceModule {
     Retrofit.Builder provideRetrofitBuilder(){
         return new Retrofit.Builder();
     }
+
     /**
      * okhttpclient builder
      * @return
      */
+    @Singleton
+    @Provides
     OkHttpClient.Builder provideOkHttpBuilder(){
         return new OkHttpClient.Builder();
     }
@@ -54,6 +73,8 @@ public class ApiServiceModule {
      * @param builder
      * @return
      */
+    @Singleton
+    @Provides
     OkHttpClient provideClient(OkHttpClient.Builder builder){
         if (BuildConfig.DEBUG){ //调试模式
             HttpLoggingInterceptor loggingInterceptor=new HttpLoggingInterceptor();
@@ -72,10 +93,10 @@ public class ApiServiceModule {
                             .cacheControl(CacheControl.FORCE_CACHE)
                             .build();
                 }
+
                 Response response = chain.proceed(request);
                 int maxAge=0;
                 if (SystemUtil.isNetworkConnected()){
-
                     //有网络时 不缓存 最大保存时长为0
                     response.newBuilder()
                             .header("Cache-Control", "public, max-age=" + maxAge)
@@ -116,22 +137,36 @@ public class ApiServiceModule {
         builder.writeTimeout(Constants.WRITE_TIMEOUT, TimeUnit.SECONDS);
         //错误重连
         builder.retryOnConnectionFailure(true);
-
         return builder.build();
-
     }
 
+    /**
+     * 干货服务类
+     * @param builder
+     * @param client
+     * @return
+     */
+    @Singleton
+    @Provides
     Retrofit provideGank(Retrofit.Builder builder,OkHttpClient client){
         return createRetrofit(builder,client, APPURL.BaseURL_GANK);
+    }
+
+    @Singleton
+    @Provides
+    GankService provideCankService(Retrofit retrofit){
+        return retrofit.create(GankService.class);
     }
 
     private Retrofit createRetrofit(Retrofit.Builder builder,OkHttpClient client,String baseUrl){
         return builder
                 .baseUrl(baseUrl)
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(buildGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
+
+
 
 }

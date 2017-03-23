@@ -92,7 +92,7 @@ public class RxBus {
         bus.onNext(new Msg(tag, obj));
     }
     /**
-     * 订阅事件
+     * 订阅事件 这三个东西 还是没调用过
      *
      * @return
      */
@@ -117,7 +117,7 @@ public class RxBus {
      * @param <T>
      * @return
      */
-    private <T> Observable<T> toObservable(final int tag, Class<T> eventType) {
+    private   <T> Observable<T> toObservable(final int tag, Class<T> eventType) {
         return bus.ofType(Msg.class)//判断接受事件类型
                 .filter(new Predicate<Msg>() {
                     @Override
@@ -133,6 +133,19 @@ public class RxBus {
                 })
                 .cast(eventType);
     }
+
+    /**
+     * 封装默认订阅 rx1.x 按照1.x抄的 也不知道对不对 ^~^
+     * @param eventType
+     * @param consumer
+     * @param <T>
+     * @return
+     */
+    public <T> Disposable toDefaultObservable(Class<T> eventType, Consumer<T> consumer) {
+        return bus.ofType(eventType).compose(RxSchedulerHelper.io_main()).subscribe(consumer);
+    }
+
+
     /**
      * 判断是否需要订阅,如果需要订阅那么自动控制什么周期
      *

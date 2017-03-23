@@ -12,14 +12,14 @@ import com.itisi.itisiapp.di.modeule.AppModule;
  */
 public class ItisiApp extends Application {
 
+    static AppComponent   mAppComponent;
     private static ItisiApp instance;
-    AppComponent mAppComponent;
 
     public static ItisiApp getInstance(){
        return instance;
     }
 
-    public AppComponent getAppComponent(){
+    public static AppComponent getAppComponent(){
         return mAppComponent;
     }
 
