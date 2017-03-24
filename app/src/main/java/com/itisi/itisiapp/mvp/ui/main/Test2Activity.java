@@ -4,10 +4,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.itisi.itisiapp.R;
+import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
 import com.itisi.itisiapp.utils.ClickTree;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -71,4 +74,8 @@ public class Test2Activity extends BaseRxBusActivity<MainPresenter> implements M
     }
 
 
+    @Override
+    public void showContent(List<GankFuLiEntity> list) {
+
+    }
 }

@@ -1,7 +1,10 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
+import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
 import com.itisi.itisiapp.mvp.ui.base.BasePresenter;
 import com.itisi.itisiapp.mvp.ui.base.BaseView;
+
+import java.util.List;
 
 /**
  * author: itisi---
@@ -13,6 +16,7 @@ public interface MainContract {
     interface View extends BaseView{
         //定义自己特有的方法
 
+        void showContent(List<GankFuLiEntity> list);
 
 
     }

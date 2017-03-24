@@ -8,10 +8,9 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:fitsSystemWindows="true"
     app:edMenuSize="@dimen/dimen_260"
     app:edPosition="1"
-    >
+>
     <!-- android:clipChildren="false" 这个属性是不限制子控件在其范围内-->
     <!--app:edMenuSize="260dp 菜单宽度 "-->
     <!--app:edPosition="1" 左右菜单 -->
@@ -21,38 +20,31 @@
 
 
     <!--content-->
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-        >
+        android:orientation="vertical"
+    >
+        <!--<include layout="@layout/toolbar"/>-->
 
-        <TextView
-            android:id="@+id/tv_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="app main"/>
-
-        <Button
-            android:id="@+id/btn_toast"
+        <include layout="@layout/tab_main"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_main"
-            android:text="testapp"
-            />
-
-
-    </RelativeLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+        ></android.support.v4.view.ViewPager>
+    </LinearLayout>
 
     <!--menu-->
     <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
-        android:id="@+id/menulayout"
+        android:id="@+id/fm_Menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        >
-      <include layout="@layout/left_menu" />
+    >
+        <include layout="@layout/left_menu"/>
     </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
 
 </com.mxn.soul.flowingdrawer_core.FlowingDrawer>

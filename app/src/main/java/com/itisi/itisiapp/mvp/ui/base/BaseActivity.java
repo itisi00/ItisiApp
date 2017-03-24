@@ -24,25 +24,30 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     protected P mPresenter; //对应的presenter
     private Unbinder mUnbinder;//buterknife 绑定的对象
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //        //透明状态栏 如果开启的话 内容会延伸到状态栏
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //        //透明导航栏
-        //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         super.onCreate(savedInstanceState);
 
         setContentView(getConentlayout());
         //初始化 ButterKnife
         mUnbinder = ButterKnife.bind(this);
+        initSwipeBack();//初始化 侧滑返回
+        setStatusBarColor();//设置状态栏
+        initView();
+        initListener();
+
         Logger.init(); //初始化日志
 
-        initSwipeBack();//初始化 侧滑返回
         initInject();//dagger2 注入
         if (mPresenter!=null){
             mPresenter.attachView(this);
         }
-        setStatusBarColor();//设置状态栏
+
         initData();//初始化 数据
     }
 
@@ -97,10 +102,18 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         //2. 设置状态栏半透明 0 -255
         // StatusBarUtil.setTranslucent(this, 0);
         //3. 设置状态栏 全透明
-        //StatusBarUtil.setTransparent(this); //设置这个 不顶到状态烂
+//        StatusBarUtil.setTransparent(this); //设置这个 不顶到状态烂
         StatusBarUtil.setTransparent(this);
         //        StatusBarUtil.setColorForSwipeBack(this, Color.parseColor("#ff0000"), 0);//设置滑动返回的activity颜色
     }
+
+    protected void initView(){
+
+    }
+    protected void initListener(){
+
+    }
+
     /**
      * 初始化数据---如果需要加载数据 则去加载数据
      */

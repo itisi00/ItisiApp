@@ -8,7 +8,6 @@ import com.itisi.itisiapp.mvp.model.net.BaseObserver;
 import com.itisi.itisiapp.mvp.model.net.RetrofitFactory;
 import com.itisi.itisiapp.mvp.rx.RxSchedulerHelper;
 import com.itisi.itisiapp.mvp.ui.base.RxPresenter;
-import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -40,8 +39,9 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
                 .subscribe(new BaseObserver<List<GankFuLiEntity>>(ItisiApp.getInstance()) {
                     @Override
                     protected void onHandleSuccess(List<GankFuLiEntity> gankFuLiEntities) {
-                        Logger.i(gankFuLiEntities.size()+"===success");
-                        mView.showError("fafdsafdas error");
+//                        Logger.i(gankFuLiEntities.size()+"===success");
+//                        mView.showError(gankFuLiEntities.size()+"===success");
+                        mView.showContent(gankFuLiEntities);
                     }
                     @Override
                     public void onSubscribe(Disposable d) {

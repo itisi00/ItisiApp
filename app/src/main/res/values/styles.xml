@@ -16,8 +16,11 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowIsTranslucent">true</item>
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
-
     </style>
 
+    <style name="Tablayout_Main" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+
+    </style>
 
 </resources>
