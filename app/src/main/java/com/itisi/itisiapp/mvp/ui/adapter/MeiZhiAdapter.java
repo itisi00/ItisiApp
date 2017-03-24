@@ -59,9 +59,7 @@ public class MeiZhiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 new ImageLoadConfiguration.Builder(mContext).url(mList.get(position).getUrl())
                 .defaultImageResId(R.mipmap.meizhi)
                 .imageView(((MeiZhiViewHolder) holder).iv_meizhi).build());
-
     }
-
     @Override
     public int getItemCount() {
         return mList.size();
