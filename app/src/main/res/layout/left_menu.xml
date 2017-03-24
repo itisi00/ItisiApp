@@ -38,71 +38,99 @@
         android:layout_weight="1"
 
     >
-
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:orientation="vertical"
                       android:paddingLeft="@dimen/dimen_15"
         >
+
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
                       android:text="大贵州1"
                       android:textSize="20sp"
             />
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州2"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州2" android:textSize="20sp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州3" android:textSize="20sp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州4" android:textSize="20sp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州5" android:textSize="20sp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州6" android:textSize="20sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州7" android:textSize="20sp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州8" android:textSize="20sp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州9" android:textSize="20sp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical" android:text="大贵州10"
                       android:textSize="20sp"
             />
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州3"
-                      android:textSize="20sp"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州11" android:textSize="20sp"
+
             />
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州4"
-                      android:textSize="20sp"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州12" android:textSize="20sp"
+
             />
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州5"
-                      android:textSize="20sp"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州12" android:textSize="20sp"
+
             />
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州6"
-                      android:textSize="20sp"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州12" android:textSize="20sp"
+
             />
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州7"
-                      android:textSize="20sp"
-            />
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州8"
-                      android:textSize="20sp"
-            />
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州9"
-                      android:textSize="20sp"
-            />
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州10"
-                      android:textSize="20sp"
-            />
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州11"
-                      android:textSize="20sp"
-            />
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:gravity="center_vertical"
-                      android:text="大贵州12"
-                      android:textSize="20sp"
+                      android:layout_height="@dimen/dimen_40" android:drawableLeft="@mipmap/date"
+                      android:gravity="center_vertical"
+                      android:text="大贵州12" android:textSize="20sp"
+
             />
         </LinearLayout>
 

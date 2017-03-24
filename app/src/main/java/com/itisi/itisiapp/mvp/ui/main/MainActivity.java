@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,14 +54,14 @@ public class MainActivity extends BaseRxBusActivity {
     @Override
     public int getConentlayout() {
         //透明状态栏 如果开启的话 内容会延伸到状态栏
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         return R.layout.activity_main;
     }
 
     @Override
     public void setStatusBarColor() {
-//        super.setStatusBarColor();
-        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
+        super.setStatusBarColor();
+        StatusBarUtil.setColor(this, Color.parseColor("#99FF4081"));
     }
 
     /**

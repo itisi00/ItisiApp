@@ -9,14 +9,15 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
-    app:edMenuBackground="#6a55ce"
     app:edMenuSize="@dimen/dimen_260"
     app:edPosition="1"
     >
     <!-- android:clipChildren="false" 这个属性是不限制子控件在其范围内-->
     <!--app:edMenuSize="260dp 菜单宽度 "-->
     <!--app:edPosition="1" 左右菜单 -->
-    <!--app:edMenuBackground="@color/colorMenu" 菜单颜色 -->
+    <!--app:edMenuBackground="@color/colorMenu"
+
+     菜单颜色 -->
 
 
     <!--content-->
@@ -25,7 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        android:fitsSystemWindows="true"
         >
 
         <TextView
@@ -50,6 +50,7 @@
         android:id="@+id/menulayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         >
       <include layout="@layout/left_menu" />
     </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
