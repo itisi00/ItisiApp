@@ -1,7 +1,6 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
 import android.view.View;
-import android.widget.ImageView;
 
 import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
@@ -12,14 +11,12 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.List;
 
-import butterknife.BindView;
-
 @UseRxBus
 public class Test2Activity extends BaseRxBusActivity<MainPresenter> implements MainContract.View {
 
 
-    @BindView(R.id.iv_test)
-    protected ImageView iv_test;
+//    @BindView(R.id.iv_test)
+//    protected ImageView iv_test;
     //多次点击事件
     ClickTree mClickTree=new ClickTree(3);
 

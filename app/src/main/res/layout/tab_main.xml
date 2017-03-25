@@ -6,7 +6,6 @@
                                          android:layout_height="35dp"
                                          android:background="@color/colorAccent"
                                          android:clipToPadding="false"
-                                         android:fitsSystemWindows="true"
                                          android:minHeight="?attr/actionBarSize"
                                          android:orientation="vertical"
                                          app:tabBackground="@drawable/tablayout_main_selected"

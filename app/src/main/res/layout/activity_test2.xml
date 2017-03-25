@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_test2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorContent3"
-    android:clipToPadding="true"
-    android:fitsSystemWindows="true"
-    tools:context=".mvp.ui.main.Test2Activity">
+    android:orientation="vertical"
+    tools:context=".mvp.ui.main.Test2Activity"
+>
 
-    <ImageView
-        android:id="@+id/iv_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <include android:id="@+id/toolbar_temp" layout="@layout/toolbar"/>
+
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-    android:layout_below="@id/iv_test"
             android:onClick="btnPost"
             android:text="rxbus post"
     />
 
-</RelativeLayout>
+</LinearLayout>

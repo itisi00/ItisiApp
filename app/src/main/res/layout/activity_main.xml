@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mxn.soul.flowingdrawer_core.FlowingDrawer
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    app:edMenuSize="@dimen/dimen_260"
-    app:edPosition="1"
+    android:background="@color/blue_btn_bg_pressed_color"
+    android:orientation="vertical"
 >
-    <!-- android:clipChildren="false" 这个属性是不限制子控件在其范围内-->
-    <!--app:edMenuSize="260dp 菜单宽度 "-->
-    <!--app:edPosition="1" 左右菜单 -->
-    <!--app:edMenuBackground="@color/colorMenu"
-
-     菜单颜色 -->
-
-
-    <!--content-->
-    <LinearLayout
-        android:id="@+id/content"
+    <com.mxn.soul.flowingdrawer_core.FlowingDrawer
+        android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:edMenuBackground="@color/blue_btn_bg_color"
+        app:edMenuSize="@dimen/dimen_300"
+        app:edPosition="1"
+        app:edTouchBezelSize="100dp"
     >
-        <!--<include layout="@layout/toolbar"/>-->
-
-        <include layout="@layout/tab_main"/>
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager_main"
+        <!--content-->
+        <LinearLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-        ></android.support.v4.view.ViewPager>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+        >
+            <include layout="@layout/toolbar"/>
+            <include layout="@layout/tab_main"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+            ></android.support.v4.view.ViewPager>
+        </LinearLayout>
+        <!--menu-->
+        <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
+            android:id="@+id/fm_Menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        >
 
-    <!--menu-->
-    <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
-        android:id="@+id/fm_Menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-    >
-        <include layout="@layout/left_menu"/>
-    </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
-
-</com.mxn.soul.flowingdrawer_core.FlowingDrawer>
-
+            <include layout="@layout/left_menu"/>
+        </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
+    </com.mxn.soul.flowingdrawer_core.FlowingDrawer>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_test_swipe_back"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorContent2"
+    android:orientation="vertical"
     tools:context=".mvp.ui.main.TestSwipeBackActivity">
 
-    <!--android:fitsSystemWindows="true"-->
-    <!--android:clipToPadding="false"-->
+
+    <include layout="@layout/toolbar"/>
     <ImageView
         android:id="@+id/iv_fuck"
         android:layout_width="match_parent"
@@ -32,4 +32,4 @@
         android:layout_below="@id/tv_test"
         android:text="testapp"
         />
-</RelativeLayout>
+</LinearLayout>

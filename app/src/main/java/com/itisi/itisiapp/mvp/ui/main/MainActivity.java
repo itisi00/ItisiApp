@@ -1,5 +1,7 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
@@ -15,10 +17,11 @@ import com.itisi.itisiapp.mvp.ui.adapter.MainFragmentPagerAdapter;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
+import com.jaeger.library.StatusBarUtil;
 import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingMenuLayout;
-import com.orhanobut.logger.Logger;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import butterknife.BindView;
 
@@ -66,7 +69,6 @@ public class MainActivity extends BaseRxBusActivity {
 
         //将tablayout与viewpager绑定在一起
         mTabLayout.setupWithViewPager(mViewPager);
-
         //指定tab的位置
         one=mTabLayout.getTabAt(0);
         two=mTabLayout.getTabAt(1);
@@ -99,9 +101,10 @@ public class MainActivity extends BaseRxBusActivity {
         iv_userHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logger.i("test");
+                startActivity(new Intent(MainActivity.this,TestSwipeBackActivity.class));
             }
         });
+
     }
 
     @Override
@@ -111,15 +114,35 @@ public class MainActivity extends BaseRxBusActivity {
 
     @Override
     public int getConentlayout() {
-        //透明状态栏 如果开启的话 内容会延伸到状态栏
         return R.layout.activity_main;
     }
 
     @Override
     public void setStatusBarColor() {
-//        super.setStatusBarColor();
-//        StatusBarUtil.setColor(this, Color.parseColor("#99FF4081"));
+        super.setStatusBarColor();
+        //5.0 以上有用  4.4.4 以上 随背景颜色
+        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
 //        StatusBarUtil.setTranslucent(this);
+    }
+
+    /**
+     * 主页 不显示返回按钮
+     * @return
+     */
+    @Override
+    public boolean isShowBacking() {
+        return false;
+    }
+
+    @Override
+    public String setSubTitle() {
+        return "更多";
+    }
+
+
+    @Override
+    protected void onSubTitleViewClick() {
+        TastyToast.makeText(this,"toolbar in main ",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS).show();
     }
 
     /**
@@ -131,13 +154,12 @@ public class MainActivity extends BaseRxBusActivity {
         mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
 //                mDrawer.setAlpha(0.5f);//整个界面的透明度
 //        mDrawer.setAnimation();
-
        // mDrawer.setRotationY(-10F);
 //        mDrawer.setRotationX(0.5F);
 //        mDrawer.setScaleX(0.5F);//整个界面缩小
-        mDrawer.setFitsSystemWindows(true);
-
-        fm_menu.setRotationY(10F);
+//        mDrawer.setFitsSystemWindows(true);
+//        mDrawer.setElevation(10F);
+        fm_menu.setRotationY(8F);
         //        fm_menu.setScaleX(0.8F);
 //        fm_menu.setTranslationZ(100F); //api 21
         //        fm_menu.setTranslationX(100F);
@@ -168,8 +190,6 @@ public class MainActivity extends BaseRxBusActivity {
 //    public boolean onTouchEvent(MotionEvent event) {
 //        return super.onTouchEvent(event);
 //    }
-
-
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

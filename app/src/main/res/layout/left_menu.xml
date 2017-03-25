@@ -14,8 +14,9 @@
 
         <ImageView
             android:id="@+id/iv_userheader"
-            android:layout_width="@dimen/dimen_40"
-            android:layout_height="@dimen/dimen_40"
+            android:layout_width="@dimen/dimen_60"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginLeft="@dimen/dimen_10"
             android:src="@mipmap/meizhi"
         />
 
@@ -100,13 +101,13 @@
 
             />
             <TextView android:layout_width="match_parent"
-                      android:layout_height="@dimen/dimen_40" android:clickable="true"
-                      android:drawableLeft="@mipmap/date"
-                      android:drawablePadding="10dp" android:focusable="true"
-                      android:focusableInTouchMode="true"
-                      android:gravity="center_vertical" android:text="大贵州6"
-                      android:textColor="@drawable/left_menu_item"
-                      android:textSize="14sp"
+                      android:layout_height="@dimen/dimen_40" android:layout_marginTop="10dp"
+                      android:clickable="true"
+                      android:drawableLeft="@mipmap/date" android:drawablePadding="10dp"
+                      android:focusable="true"
+                      android:focusableInTouchMode="true" android:gravity="center_vertical"
+                      android:text="大贵州6"
+                      android:textColor="@drawable/left_menu_item" android:textSize="14sp"
             />
             <TextView android:layout_width="match_parent"
                       android:layout_height="@dimen/dimen_40" android:layout_marginTop="10dp"
