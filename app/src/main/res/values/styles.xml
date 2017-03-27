@@ -18,9 +18,23 @@
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
     </style>
 
+    <style name="LeftMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_40</item>
+        <item name="android:layout_marginTop">@dimen/dimen_10</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:drawablePadding">@dimen/dimen_10</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@drawable/left_menu_item</item>
+        <item name="android:textSize">@dimen/txtsize_14</item>
+    </style>
+
     <style name="Tablayout_Main" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
 
-
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>

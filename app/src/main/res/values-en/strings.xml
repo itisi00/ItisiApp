@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ABCDEFG</string>
+
+    <string name="menu_home">home</string>
+    <string name="menu_news">news</string>
+    <string name="menu_guizhou">guizhou</string>
+    <string name="menu_leisure">leisure</string>
+    <string name="menu_chat">chat</string>
+
+
+    <string name="left_menu_agenda">agenda</string>
+    <string name="left_menu_birthday">birthday</string>
+    <string name="left_menu_account">account</string>
+    <string name="left_menu_footprint">footprint</string>
+    <string name="left_menu_album">album</string>
+    <string name="left_menu_collection">collection</string>
+    <string name="left_menu_about">about</string>
+
+    <string name="icon_more">more</string>
+    <string name="icon_close">close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tab_and_viewpager">TabAndViewpagerActivity</string>
+
+
+
+</resources>

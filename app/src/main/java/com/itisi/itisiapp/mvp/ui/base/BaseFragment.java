@@ -65,7 +65,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         mUnbinder= ButterKnife.bind(this,mView);
         //其实这儿还差很多代码
         initEventAndData();
-
     }
 
     @Override

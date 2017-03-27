@@ -1,4 +1,4 @@
-package com.itisi.itisiapp.mvp.ui.main;
+package com.itisi.itisiapp.mvp.ui.main.test;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.itisi.itisiapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Fragment_Main2 extends Fragment {
+public class Fragment_Main3 extends Fragment {
 
 
-    public Fragment_Main2() {
+    public Fragment_Main3() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Fragment_Main2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment__main2, container, false);
+        return inflater.inflate(R.layout.fragment_fragment__main3, container, false);
     }
 
 }

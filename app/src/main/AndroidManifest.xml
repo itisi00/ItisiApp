@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/> <!-- 读取联系人 -->
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <!-- 写联系人 应该用不到 -->
     <application
         android:name=".app.ItisiApp"
@@ -41,14 +42,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mvp.ui.main.TestSwipeBackActivity"
+            android:name=".mvp.ui.main.test.TestSwipeBackActivity"
             android:theme="@style/AppThemeBack">
         </activity>
         <activity
-            android:name=".mvp.ui.main.Test2Activity"
+            android:name=".mvp.ui.main.test.Test2Activity"
             android:theme="@style/AppThemeBack">
         </activity>
-
+        <activity
+            android:name=".mvp.ui.main.test.TabAndViewpagerActivity"
+            android:label="@string/title_activity_tab_and_viewpager"
+            android:theme="@style/AppThemeBack">
+        </activity>
     </application>
 
 </manifest>

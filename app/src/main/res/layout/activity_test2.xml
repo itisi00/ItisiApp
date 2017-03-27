@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorContent3"
     android:orientation="vertical"
-    tools:context=".mvp.ui.main.Test2Activity"
+    tools:context=".mvp.ui.main.test.Test2Activity"
 >
 
     <include android:id="@+id/toolbar_temp" layout="@layout/toolbar"/>

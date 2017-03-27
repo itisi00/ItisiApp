@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/blue_btn_bg_pressed_color"
     android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
 >
     <com.mxn.soul.flowingdrawer_core.FlowingDrawer
         android:id="@+id/drawerlayout"
@@ -26,13 +27,25 @@
             android:orientation="vertical"
         >
             <include layout="@layout/toolbar"/>
-            <include layout="@layout/tab_main"/>
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager_main"
+
+            <FrameLayout
+                android:id="@+id/fl_main"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-            ></android.support.v4.view.ViewPager>
+                android:layout_weight="1" />
+
+
+            <com.ashokvarma.bottomnavigation.BottomNavigationBar
+                android:id="@+id/bottom_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:bnbBackgroundStyle="background_style_ripple"
+                app:bnbMode="mode_shifting"
+            >
+
+            </com.ashokvarma.bottomnavigation.BottomNavigationBar>
+
         </LinearLayout>
         <!--menu-->
         <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout

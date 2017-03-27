@@ -1,4 +1,4 @@
-package com.itisi.itisiapp.mvp.ui.main;
+package com.itisi.itisiapp.mvp.ui.main.test;
 
 import android.view.View;
 
@@ -6,6 +6,8 @@ import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
+import com.itisi.itisiapp.mvp.ui.main.MainContract;
+import com.itisi.itisiapp.mvp.ui.main.MainPresenter;
 import com.itisi.itisiapp.utils.ClickTree;
 import com.sdsmdg.tastytoast.TastyToast;
 

@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.itisi.itisiapp.mvp.ui.main.Fragment_Main1;
-import com.itisi.itisiapp.mvp.ui.main.Fragment_Main2;
-import com.itisi.itisiapp.mvp.ui.main.Fragment_Main3;
-import com.itisi.itisiapp.mvp.ui.main.Fragment_Main4;
+import com.itisi.itisiapp.mvp.ui.main.test.Fragment_Main1;
+import com.itisi.itisiapp.mvp.ui.main.test.Fragment_Main2;
+import com.itisi.itisiapp.mvp.ui.main.test.Fragment_Main3;
+import com.itisi.itisiapp.mvp.ui.main.test.Fragment_Main4;
 
 /**
  * author: itisi---

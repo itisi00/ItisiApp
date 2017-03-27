@@ -15,15 +15,12 @@
     <string name="left_menu_collection">我的收藏</string>
     <string name="left_menu_about">关于我们</string>
 
-
     <string name="icon_more">更多</string>
     <string name="icon_close">关闭</string>
 
-
-
     <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_tab_and_viewpager">TabAndViewpagerActivity</string>
-
 
 </resources>

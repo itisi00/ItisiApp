@@ -1,4 +1,4 @@
-package com.itisi.itisiapp.mvp.ui.main;
+package com.itisi.itisiapp.mvp.ui.main.test;
 
 
 import android.os.Bundle;

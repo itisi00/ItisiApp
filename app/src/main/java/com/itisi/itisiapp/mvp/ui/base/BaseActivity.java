@@ -109,7 +109,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
             }
         });
 
-
     }
 
     private Toolbar getToolbar() {
@@ -158,7 +157,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
      * @return
      */
     public String setToolbarTitle() {
-        return "大贵州";
+        return "";
     }
 
     /**

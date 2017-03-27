@@ -72,8 +72,11 @@ dependencies {
     compile 'com.github.YancyYe:GalleryPick:1.1.8'
     compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
     compile 'jp.wasabeef:glide-transformations:2.0.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
     apt 'com.google.dagger:dagger-compiler:2.8'
     provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.youth.banner:banner:1.4.9'
 }
