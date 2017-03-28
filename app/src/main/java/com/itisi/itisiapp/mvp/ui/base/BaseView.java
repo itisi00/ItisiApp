@@ -8,4 +8,6 @@ package com.itisi.itisiapp.mvp.ui.base;
 
 public interface BaseView {
    void showError(String msg);
+   //显示对话框之类的
+
 }

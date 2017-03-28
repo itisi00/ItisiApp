@@ -18,6 +18,13 @@
 
     <string name="icon_more">more</string>
     <string name="icon_close">close</string>
+    <string name="icon_temperature">18℃</string>
+
+    <string name="home_menu_recuit">recuit</string>
+    <string name="home_menu_rental">rental</string>
+    <string name="home_menu_read">read</string>
+    <string name="home_menu_select">select</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
 

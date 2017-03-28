@@ -25,27 +25,28 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackActivity implements BaseView {
 
+    protected SwipeBackLayout mSwipeBackLayout;
+
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
     @BindView(R.id.toolbar_title)
     protected TextView mToolbarTitle;
     @BindView(R.id.toolbar_subtitle)
     protected TextView mToolbarSubTitle;
-    protected SwipeBackLayout mSwipeBackLayout;
+
     @Inject
     protected P mPresenter; //对应的presenter
     private Unbinder mUnbinder;//buterknife 绑定的对象
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getConentlayout());
         mUnbinder = ButterKnife.bind(this);//初始化 ButterKnife
-        initSwipeBack();//初始化 侧滑返回
-        setStatusBarColor();//设置状态栏
         initView();
+        setStatusBarColor();//设置状态栏
+        initSwipeBack();//初始化 侧滑返回
+
         initListener();
 
         if (mToolbar != null) {
@@ -64,6 +65,26 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         }
         initData();//初始化 数据
         Logger.init(); //初始化日志
+    }
+    /**
+     * 初始化
+     */
+    private void initSwipeBack() {
+        mSwipeBackLayout = getSwipeBackLayout();
+        //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
+        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+        //        /**
+        //         * 获取状态栏高度——方法1
+        //         * */
+        //        int statusBarHeight1 = -1;
+        //        //获取status_bar_height资源的ID
+        //        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        //        if (resourceId > 0) {
+        //            //根据资源ID获取响应的尺寸值
+        //            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
+        //        }
+        //        Log.e("WangJ", "状态栏-方法1:" + statusBarHeight1);
+
     }
 
     @Override
@@ -188,7 +209,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     protected  void onSubTitleViewClick(){
     }
 
-
     /**
      * 注入
      */
@@ -211,27 +231,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
      * @return
      */
     public abstract int getConentlayout();
-
-    /**
-     * 初始化
-     */
-    private void initSwipeBack() {
-        mSwipeBackLayout = getSwipeBackLayout();
-        //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
-        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
-        //        /**
-        //         * 获取状态栏高度——方法1
-        //         * */
-        //        int statusBarHeight1 = -1;
-        //        //获取status_bar_height资源的ID
-        //        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        //        if (resourceId > 0) {
-        //            //根据资源ID获取响应的尺寸值
-        //            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
-        //        }
-        //        Log.e("WangJ", "状态栏-方法1:" + statusBarHeight1);
-
-    }
 
     /**
      * 设置状态栏颜色 默认就是透明的

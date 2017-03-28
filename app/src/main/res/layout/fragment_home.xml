@@ -2,6 +2,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/blue_btn_bg_color"
               android:orientation="vertical"
               tools:context="com.itisi.itisiapp.mvp.ui.main.home.HomeFragment"
 >
@@ -10,8 +11,79 @@
     <com.youth.banner.Banner
         android:id="@+id/banner_main"
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="180dp"
+        android:background="#cccccc">
 
     </com.youth.banner.Banner>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0094ff"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dimen_20"
+
+    >
+        <TextView
+            style="@style/HomeMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/home_menu_recuit"
+        />
+        <TextView
+            style="@style/HomeMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/home_menu_rental"
+
+        />
+        <TextView
+            style="@style/HomeMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/home_menu_read"
+
+        />
+        <TextView
+            style="@style/HomeMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/home_menu_select"
+
+        />
+
+    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#0094ff"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingTop="@dimen/dimen_20"-->
+
+    <!--&gt;-->
+        <!--<TextView-->
+            <!--style="@style/HomeMenu"-->
+            <!--android:drawableTop="@mipmap/menu_temp_black"-->
+            <!--android:text="资料"-->
+
+        <!--/>-->
+        <!--<TextView-->
+            <!--style="@style/HomeMenu"-->
+            <!--android:drawableTop="@mipmap/menu_temp_black"-->
+            <!--android:text="招聘2"-->
+
+        <!--/>-->
+        <!--<TextView-->
+            <!--style="@style/HomeMenu"-->
+            <!--android:drawableTop="@mipmap/menu_temp_black"-->
+            <!--android:text="招聘3"-->
+
+        <!--/>-->
+        <!--<TextView-->
+            <!--style="@style/HomeMenu"-->
+            <!--android:drawableTop="@mipmap/menu_temp_black"-->
+            <!--android:text="招聘4"-->
+
+        <!--/>-->
+
+    <!--</LinearLayout>-->
+
+
+
 
 </LinearLayout>

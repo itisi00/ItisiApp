@@ -54,6 +54,8 @@
             android:label="@string/title_activity_tab_and_viewpager"
             android:theme="@style/AppThemeBack">
         </activity>
+        <activity android:name=".mvp.ui.birthday.BirthdayActivity">
+        </activity>
     </application>
 
 </manifest>

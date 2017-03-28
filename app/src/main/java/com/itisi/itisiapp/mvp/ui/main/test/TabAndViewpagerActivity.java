@@ -86,7 +86,7 @@ public class TabAndViewpagerActivity  extends BaseRxBusActivity {
     @Override
     protected void initListener() {
         //有tab 滑动 暂时禁止滑动关闭 待解决手势冲突后 再说
-        mSwipeBackLayout.setEnableGesture(false);
+//        mSwipeBackLayout.setEnableGesture(false);
     }
 
     @Override

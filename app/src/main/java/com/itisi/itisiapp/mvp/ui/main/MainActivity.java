@@ -1,17 +1,18 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.itisi.itisiapp.R;
+import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
 import com.itisi.itisiapp.mvp.rx.annotation.UseRxBus;
 import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
 import com.itisi.itisiapp.mvp.ui.main.chat.ChatFragment;
@@ -19,7 +20,7 @@ import com.itisi.itisiapp.mvp.ui.main.guizhou.GuiZhouFragment;
 import com.itisi.itisiapp.mvp.ui.main.home.HomeFragment;
 import com.itisi.itisiapp.mvp.ui.main.leisure.LeisureFragment;
 import com.itisi.itisiapp.mvp.ui.main.news.NewsFragment;
-import com.itisi.itisiapp.mvp.ui.main.test.TabAndViewpagerActivity;
+import com.itisi.itisiapp.utils.ToastUtil;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
 import com.jaeger.library.StatusBarUtil;
@@ -32,8 +33,6 @@ import com.sdsmdg.tastytoast.TastyToast;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
 
 import static com.itisi.itisiapp.utils.ResourceUtil.readStringSource;
@@ -41,27 +40,41 @@ import static com.itisi.itisiapp.utils.ResourceUtil.readStringSource;
 /**
  * 主页面
  * 参考架构 http://www.jianshu.com/p/cdcc9bef5ea0
+ * 如果需要事件传递 则继承 BaseRxBusActivity
+ * 如果不需要 则可直接继承 BaseActivity
  */
 @UseRxBus
-public class MainActivity extends BaseRxBusActivity {
-
-    @BindView(R.id.iv_userheader)
-    protected ImageView iv_userHeader;
+public class MainActivity extends BaseRxBusActivity<MainPresenter> implements MainContract.View,View.OnClickListener {
+    //左侧
+    @BindView(R.id.iv_left_header)
+    protected ImageView iv_left_header;
+    //主页 布局
     @BindView(R.id.drawerlayout)
-     FlowingDrawer mDrawer;
+    FlowingDrawer mDrawer;
     @BindView(R.id.fm_Menu)
     FlowingMenuLayout fm_menu;
     @BindView(R.id.bottom_main)
     BottomNavigationBar bottom_main;
-    @Inject
+    @BindView(R.id.tv_left_agenda)
+    TextView tv_left_agenda;
+    @BindView(R.id.tv_left_birthday)
+    TextView tv_left_birthday;
+    @BindView(R.id.tv_left_account)
+    TextView tv_left_account;
+    @BindView(R.id.tv_left_footprint)
+    TextView tv_left_footprint;
+    @BindView(R.id.tv_left_album)
+    TextView tv_left_album;
+    @BindView(R.id.tv_left_collection)
+    TextView tv_left_collection;
+    @BindView(R.id.tv_left_about)
+    TextView tv_left_about;
+
+
     HomeFragment mHomeFragment;
-    @Inject
     NewsFragment mNewsFragment;
-    @Inject
     GuiZhouFragment mGuiZhouFragment;
-    @Inject
     LeisureFragment mLeisureFragment;
-    @Inject
     ChatFragment mChatFragment;
     private List<Fragment>mFragments;
     private Fragment mCurrentFragment;
@@ -69,10 +82,11 @@ public class MainActivity extends BaseRxBusActivity {
 
     @Override
     protected void initView() {
-        
+        //fragment 页面初始化
         mFragments=getFragments();
         setDefaultFragment();
 
+        //主页底部导航栏
         BadgeItem numberBadgeItem =new BadgeItem()
                 .setBorderWidth(4)
                 .setBackgroundColorResource(R.color.colorAccent)
@@ -95,20 +109,13 @@ public class MainActivity extends BaseRxBusActivity {
                 .setFirstSelectedPosition(0)
                 .initialise();
 
-
-        iv_userHeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,TestSwipeBackActivity.class));
-                startActivity(new Intent(MainActivity.this,TabAndViewpagerActivity.class));
-            }
-        });
     }
 
-    //
+
     @Override
     protected void initListener() {
         setSwipeBackDisabled();//主页禁止滑动关闭
+        //底部 bottomnavigation点击事件
         bottom_main.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
@@ -149,12 +156,22 @@ public class MainActivity extends BaseRxBusActivity {
 
             }
         });
+        //左侧菜单点击事件
+        iv_left_header.setOnClickListener(this);
+        tv_left_agenda.setOnClickListener(this);
+        tv_left_birthday.setOnClickListener(this);
+        tv_left_account.setOnClickListener(this);
+        tv_left_footprint.setOnClickListener(this);
+        tv_left_album.setOnClickListener(this);
+        tv_left_collection.setOnClickListener(this);
+        tv_left_about.setOnClickListener(this);
+
     }
 
 
     @Override
     protected void initInject() {
-
+        getActivityComponent().inject(this);
     }
 
     @Override
@@ -167,7 +184,6 @@ public class MainActivity extends BaseRxBusActivity {
         super.setStatusBarColor();
         //5.0 以上有用  4.4.4 以上 随背景颜色
         StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
-//        StatusBarUtil.setTranslucent(this);
     }
 
     /**
@@ -181,9 +197,8 @@ public class MainActivity extends BaseRxBusActivity {
 
     @Override
     public String setSubTitle() {
-        return readStringSource(this,R.string.icon_more);
+        return readStringSource(this,R.string.icon_temperature);
     }
-
 
     @Override
     protected void onSubTitleViewClick() {
@@ -195,8 +210,9 @@ public class MainActivity extends BaseRxBusActivity {
      */
     private void setSwipeBackDisabled() {
         mSwipeBackLayout.setEnableGesture(false);//主页禁止滑动关闭
-//        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_FULLSCREEN);
-        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
+        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_FULLSCREEN);
+        mDrawer.setClickable(false);
+//        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
 //                mDrawer.setAlpha(0.5f);//整个界面的透明度
 //        mDrawer.setAnimation();
        // mDrawer.setRotationY(-10F);
@@ -204,25 +220,25 @@ public class MainActivity extends BaseRxBusActivity {
 //        mDrawer.setScaleX(0.5F);//整个界面缩小
 //        mDrawer.setFitsSystemWindows(true);
 //        mDrawer.setElevation(10F);
-        fm_menu.setRotationY(8F);
+//        fm_menu.setRotationY(8F);
         //        fm_menu.setScaleX(0.8F);
 //        fm_menu.setTranslationZ(100F); //api 21
         //        fm_menu.setTranslationX(100F);
 //                fm_menu.setTranslationY(50F);
         //侧滑菜单 滑动监听
-        mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
-            @Override
-            public void onDrawerStateChange(int oldState, int newState) {
-                if (newState == ElasticDrawer.STATE_CLOSED) {
-//                    Logger.i("Drawer STATE_CLOSED");
-                }
-            }
-
-            @Override
-            public void onDrawerSlide(float openRatio, int offsetPixels) {
-//                Logger.i("openRatio:"+openRatio+"==="+"offsetPixels:"+offsetPixels);
-            }
-        });
+//        mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
+//            @Override
+//            public void onDrawerStateChange(int oldState, int newState) {
+//                if (newState == ElasticDrawer.STATE_CLOSED) {
+////                    Logger.i("Drawer STATE_CLOSED");
+//                }
+//            }
+//
+//            @Override
+//            public void onDrawerSlide(float openRatio, int offsetPixels) {
+////                Logger.i("openRatio:"+openRatio+"==="+"offsetPixels:"+offsetPixels);
+//            }
+//        });
     }
     @Override
     public void showError(String msg) {
@@ -233,7 +249,7 @@ public class MainActivity extends BaseRxBusActivity {
     protected void initData() {
 
         ImageLoadProxy.getInstance().load(new ImageLoadConfiguration.Builder(this).url(R.mipmap.ic_launcher)
-                        .isCircle(true).defaultImageResId(R.mipmap.ic_launcher).imageView(iv_userHeader).build());
+                        .isCircle(true).defaultImageResId(R.mipmap.ic_launcher).imageView(iv_left_header).build());
 
     }
 
@@ -283,5 +299,59 @@ public class MainActivity extends BaseRxBusActivity {
         transaction.commit();
 
     }
+
+    /**
+     * 显示内容 这个方法可能会改动
+     * @param list
+     */
+    @Override
+    public void showContent(List<GankFuLiEntity> list) {
+
+    }
+
+    /**
+     * 点击事件
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+        Logger.i(v.getId()+"");
+        switch (v.getId()){
+            case R.id.iv_left_header:
+                ToastUtil.Success("头像");
+                break;
+            case R.id.tv_left_agenda:
+                ToastUtil.Info("日程");
+                break;
+            case R.id.tv_left_birthday:
+                ToastUtil.Warning("生日");
+                break;
+            case R.id.tv_left_account:
+                ToastUtil.Error("记账");
+                break;
+            case R.id.tv_left_footprint:
+                ToastUtil.Confusing("足迹");
+                break;
+            case R.id.tv_left_album:
+                ToastUtil.Success("相册");
+                break;
+            case R.id.tv_left_collection:
+                ToastUtil.Success("收藏");
+                break;
+            case R.id.tv_left_about:
+                ToastUtil.Success("关于");
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawer.isShown()) {
+            mDrawer.closeMenu(true);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
 }

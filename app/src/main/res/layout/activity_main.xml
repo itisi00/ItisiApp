@@ -1,60 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_btn_bg_pressed_color"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/blue_btn_bg_color"
 >
-    <com.mxn.soul.flowingdrawer_core.FlowingDrawer
-        android:id="@+id/drawerlayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        app:edMenuBackground="@color/blue_btn_bg_color"
-        app:edMenuSize="@dimen/dimen_300"
-        app:edPosition="1"
-        app:edTouchBezelSize="100dp"
+<com.mxn.soul.flowingdrawer_core.FlowingDrawer
+    android:id="@+id/drawerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:edMenuSize="280dp"
+    app:edPosition="1"
     >
-        <!--content-->
-        <LinearLayout
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-        >
-            <include layout="@layout/toolbar"/>
-
-            <FrameLayout
-                android:id="@+id/fl_main"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-
-            <com.ashokvarma.bottomnavigation.BottomNavigationBar
-                android:id="@+id/bottom_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                app:bnbBackgroundStyle="background_style_ripple"
-                app:bnbMode="mode_shifting"
-            >
-
-            </com.ashokvarma.bottomnavigation.BottomNavigationBar>
-
-        </LinearLayout>
-        <!--menu-->
+    <!--android:clipChildren="false"-->
+    <!--android:clipToPadding="false"-->
+        <include layout="@layout/right_content"/>
         <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
             android:id="@+id/fm_Menu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-        >
+            android:layout_height="match_parent">
+                <include layout="@layout/left_menu"/>
 
-            <include layout="@layout/left_menu"/>
         </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
-    </com.mxn.soul.flowingdrawer_core.FlowingDrawer>
-</android.support.design.widget.CoordinatorLayout>
+
+</com.mxn.soul.flowingdrawer_core.FlowingDrawer>
+
+</LinearLayout>

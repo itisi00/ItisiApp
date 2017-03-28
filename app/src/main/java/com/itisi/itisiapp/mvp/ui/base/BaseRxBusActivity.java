@@ -12,9 +12,13 @@ import com.itisi.itisiapp.mvp.rx.RxBus;
  * 很多方法 都被我私有了 如果访问级别有错 再来调整
  */
 public abstract class BaseRxBusActivity<P extends BasePresenter> extends BaseActivity<P> {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         RxBus.getInstance().init(this); //初始化事件总线
     }
+
+
 }

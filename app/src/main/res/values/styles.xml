@@ -28,7 +28,19 @@
         <item name="android:drawablePadding">@dimen/dimen_10</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@drawable/left_menu_item</item>
-        <item name="android:textSize">@dimen/txtsize_14</item>
+        <item name="android:textSize">@dimen/txtsize_18</item>
+        <item name="android:padding">@dimen/dimen_1</item>
+    </style>
+
+    <style name="HomeMenu">
+        <item name="android:layout_width">@dimen/dimen_0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/dimen_5</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/dimen_2</item>
+        <item name="android:textSize">@dimen/dimen_10</item>
+
     </style>
 
     <style name="Tablayout_Main" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">

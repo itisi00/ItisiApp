@@ -22,12 +22,16 @@ import dagger.Component;
 @Component(dependencies = AppComponent.class,modules = FragmentModule.class)
 public interface FragmentComponent {
     Activity getActivity();
+    //测试
     void inject(Fragment_Main1 fragment_main1);
+    //主页的5大 fragment
     void inject(HomeFragment homeFragment );
     void inject(NewsFragment homeFragment );
     void inject(LeisureFragment homeFragment );
     void inject(GuiZhouFragment homeFragment );
     void inject(ChatFragment chatFragment  );
+
+
 
     //inject 其他 framgent
 }

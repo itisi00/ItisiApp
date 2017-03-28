@@ -24,7 +24,6 @@ public class Test2Activity extends BaseRxBusActivity<MainPresenter> implements M
 
     @Override
     protected void initInject() {
-
         getActivityComponent().inject(this);
     }
     @Override

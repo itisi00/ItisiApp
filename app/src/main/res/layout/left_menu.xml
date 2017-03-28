@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/left_menu_back"
+    android:orientation="vertical"
+>
 
-
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:background="@mipmap/header_back"
-                    android:paddingLeft="@dimen/dimen_15"
-                    android:paddingTop="@dimen/dimen_80"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:paddingLeft="@dimen/dimen_15"
+        android:paddingTop="@dimen/dimen_80"
     >
-
         <ImageView
-            android:id="@+id/iv_userheader"
+            android:id="@+id/iv_left_header"
             android:layout_width="@dimen/dimen_60"
             android:layout_height="@dimen/dimen_60"
             android:layout_marginLeft="@dimen/dimen_10"
             android:src="@mipmap/meizhi"
         />
-
         <TextView
             android:id="@+id/tv_username"
             android:layout_width="@dimen/dimen_180"
             android:layout_height="@dimen/dimen_40"
             android:layout_marginLeft="@dimen/dimen_10"
-            android:layout_toRightOf="@id/iv_userheader"
+            android:layout_toRightOf="@id/iv_left_header"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
@@ -41,51 +41,53 @@
         android:paddingBottom="@dimen/dimen_50"
 
     >
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:paddingLeft="@dimen/dimen_25"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_25"
         >
-
-            <TextView style="@style/LeftMenu"
-                      android:drawableLeft="@mipmap/menu_love_white"
-                      android:text="@string/left_menu_agenda"
-
-            />
-            <TextView style="@style/LeftMenu"
-                      android:drawableLeft="@mipmap/menu_love_white"
-                      android:text="@string/left_menu_birthday"
-
-
-            />
-            <TextView style="@style/LeftMenu"
-                      android:drawableLeft="@mipmap/menu_love_white"
-                      android:text="@string/left_menu_account"
-
-
-            />
-            <TextView style="@style/LeftMenu"
-                      android:drawableLeft="@mipmap/menu_love_white"
-                      android:text="@string/left_menu_footprint"
-
-
-            />
-            <TextView style="@style/LeftMenu"
-                      android:drawableLeft="@mipmap/menu_love_white"
-                      android:text="@string/left_menu_album"
-
-
-            />
-            <TextView style="@style/LeftMenu"
-                      android:drawableLeft="@mipmap/menu_love_white"
-                      android:text="@string/left_menu_collection"
-
+            <TextView
+                android:id="@+id/tv_left_agenda"
+                style="@style/LeftMenu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="@string/left_menu_agenda"
             />
             <TextView
+                android:id="@+id/tv_left_birthday"
+                style="@style/LeftMenu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="@string/left_menu_birthday"
+            />
+            <TextView
+                android:id="@+id/tv_left_account"
+                style="@style/LeftMenu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="@string/left_menu_account"
+            />
+            <TextView
+                android:id="@+id/tv_left_footprint"
+                style="@style/LeftMenu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="@string/left_menu_footprint"
+            />
+            <TextView
+                android:id="@+id/tv_left_album"
+                style="@style/LeftMenu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="@string/left_menu_album"
+            />
+            <TextView
+                android:id="@+id/tv_left_collection"
+                style="@style/LeftMenu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="@string/left_menu_collection"
+            />
+            <TextView
+                android:id="@+id/tv_left_about"
                 style="@style/LeftMenu"
                 android:drawableLeft="@mipmap/menu_love_white"
                 android:text="@string/left_menu_about"
-
             />
         </LinearLayout>
 
