@@ -32,6 +32,33 @@
         <item name="android:padding">@dimen/dimen_1</item>
     </style>
 
+    <style name="LeftMenu_RB_Menu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_40</item>
+        <item name="android:drawablePadding">@dimen/dimen_10</item>
+        <item name="android:paddingStart">@dimen/dimen_25</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@drawable/left_menu_item</item>
+        <item name="android:textSize">@dimen/txtsize_16</item>
+        <item name="android:padding">@dimen/dimen_1</item>
+        <item name="android:button">@null</item>
+
+    </style>
+
+    <style name="LeftMenu_RB_Bottom">
+        <item name="android:layout_width">@dimen/dimen_0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/dimen_10</item>
+        <item name="android:paddingStart">@dimen/dimen_25</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@drawable/left_menu_item</item>
+        <item name="android:textSize">@dimen/txtsize_14</item>
+        <item name="android:padding">@dimen/dimen_4</item>
+        <item name="android:button">@null</item>
+
+    </style>
+
     <style name="HomeMenu">
         <item name="android:layout_width">@dimen/dimen_0</item>
         <item name="android:layout_height">wrap_content</item>

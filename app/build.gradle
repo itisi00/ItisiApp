@@ -63,7 +63,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'cn.pedant.sweetalert:library:1.3'
-        compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
+    compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
     compile 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
     compile 'com.github.sd6352051:NiftyNotification:1.2'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.2'

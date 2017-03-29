@@ -2,13 +2,21 @@ package com.itisi.itisiapp.mvp.ui.main.home;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.app.ItisiApp;
 import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
 import com.itisi.itisiapp.mvp.ui.base.BaseFragment;
+import com.itisi.itisiapp.mvp.ui.read.ReadActivity;
+import com.itisi.itisiapp.mvp.ui.recruit.RecruitActivity;
+import com.itisi.itisiapp.mvp.ui.rental.RentalActivity;
+import com.itisi.itisiapp.mvp.ui.select.SelectActivity;
+import com.itisi.itisiapp.mvp.ui.user.UserActivity;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
 import com.youth.banner.Banner;
@@ -24,10 +32,24 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeContract.View  {
+public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeContract.View,View.OnClickListener  {
 
     @BindView(R.id.banner_main)
     Banner banner_main;
+    @BindView(R.id.tv_home_recuit)
+    TextView tv_home_recuit;
+
+    @BindView(R.id.tv_home_rental)
+    TextView tv_home_rental;
+
+    @BindView(R.id.tv_home_read)
+    TextView tv_home_read;
+
+    @BindView(R.id.tv_home_select)
+    TextView tv_home_select;
+
+
+
 
     @Override
     public int getLayoutId() {
@@ -37,6 +59,15 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     @Override
     public void initInject() {
         getFragmentComponent().inject(this);
+    }
+
+    @Override
+    public void initLinstener() {
+        //主页
+        tv_home_recuit.setOnClickListener(this);
+        tv_home_rental.setOnClickListener(this);
+        tv_home_read.setOnClickListener(this);
+        tv_home_select.setOnClickListener(this);
     }
 
     @Override
@@ -80,6 +111,29 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     public void showContent(List<GankFuLiEntity> list) {
     }
 
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.iv_left_header:
+                startActivity(new Intent(ItisiApp.getInstance(), UserActivity.class));
+                break;
+            case R.id.tv_home_recuit:
+                startActivity(new Intent(ItisiApp.getInstance(), RecruitActivity.class));
+                break;
+            case R.id.tv_home_rental:
+                startActivity(new Intent(ItisiApp.getInstance(), RentalActivity.class));
+                break;
+            case R.id.tv_home_read:
+                startActivity(new Intent(ItisiApp.getInstance(), ReadActivity.class));
+                break;
+            case R.id.tv_home_select:
+                startActivity(new Intent(ItisiApp.getInstance(), SelectActivity.class));
+                break;
+
+        }
+
+    }
     @Override
     public void onStart() {
         super.onStart();

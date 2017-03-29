@@ -16,11 +16,14 @@
     >
     <!--android:clipChildren="false"-->
     <!--android:clipToPadding="false"-->
+
         <include layout="@layout/right_content"/>
+
         <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
             android:id="@+id/fm_Menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
                 <include layout="@layout/left_menu"/>
 
         </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>

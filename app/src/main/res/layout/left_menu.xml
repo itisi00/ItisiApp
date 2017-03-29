@@ -34,62 +34,95 @@
             android:textSize="@dimen/txtsize_30"
         />
     </RelativeLayout>
-    <android.support.v4.widget.NestedScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_0"
         android:layout_weight="1"
-        android:paddingBottom="@dimen/dimen_50"
+        android:orientation="vertical"
 
     >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dimen_25"
-        >
-            <TextView
-                android:id="@+id/tv_left_agenda"
-                style="@style/LeftMenu"
-                android:drawableLeft="@mipmap/menu_love_white"
-                android:text="@string/left_menu_agenda"
-            />
-            <TextView
-                android:id="@+id/tv_left_birthday"
-                style="@style/LeftMenu"
-                android:drawableLeft="@mipmap/menu_love_white"
-                android:text="@string/left_menu_birthday"
-            />
-            <TextView
-                android:id="@+id/tv_left_account"
-                style="@style/LeftMenu"
-                android:drawableLeft="@mipmap/menu_love_white"
-                android:text="@string/left_menu_account"
-            />
-            <TextView
-                android:id="@+id/tv_left_footprint"
-                style="@style/LeftMenu"
-                android:drawableLeft="@mipmap/menu_love_white"
-                android:text="@string/left_menu_footprint"
-            />
-            <TextView
-                android:id="@+id/tv_left_album"
-                style="@style/LeftMenu"
-                android:drawableLeft="@mipmap/menu_love_white"
-                android:text="@string/left_menu_album"
-            />
-            <TextView
-                android:id="@+id/tv_left_collection"
-                style="@style/LeftMenu"
-                android:drawableLeft="@mipmap/menu_love_white"
-                android:text="@string/left_menu_collection"
-            />
-            <TextView
-                android:id="@+id/tv_left_about"
-                style="@style/LeftMenu"
-                android:drawableLeft="@mipmap/menu_love_white"
-                android:text="@string/left_menu_about"
-            />
-        </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+        <RadioGroup
+            android:id="@+id/rg_left_menu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_weight="1"
+
+        >
+            <RadioButton
+                android:id="@+id/rb_agenda"
+                style="@style/LeftMenu_RB_Menu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="日程"
+
+            />
+            <RadioButton
+                android:id="@+id/rb_birthday"
+                style="@style/LeftMenu_RB_Menu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="生日"
+            />
+            <RadioButton
+                android:id="@+id/rb_account"
+                style="@style/LeftMenu_RB_Menu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="记账"
+            />
+            <RadioButton
+                android:id="@+id/rb_footprint"
+                style="@style/LeftMenu_RB_Menu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="足迹"
+            />
+            <RadioButton
+                android:id="@+id/rb_album"
+                style="@style/LeftMenu_RB_Menu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="相册"
+            />
+            <RadioButton
+                android:id="@+id/rb_collection"
+                style="@style/LeftMenu_RB_Menu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="收藏"
+            />
+            <RadioButton
+                android:id="@+id/rb_about"
+                style="@style/LeftMenu_RB_Menu"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="关于"
+            />
+
+        </RadioGroup>
+
+
+        <RadioGroup
+            android:id="@+id/rg_left_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dimen_15"
+            android:paddingEnd="@dimen/dimen_25"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingStart="@dimen/dimen_25"
+
+        >
+            <RadioButton
+                android:id="@+id/rb_setting"
+               style="@style/LeftMenu_RB_Bottom"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="设置"
+
+            />
+            <RadioButton
+                android:id="@+id/rb_theme"
+                style="@style/LeftMenu_RB_Bottom"
+                android:drawableLeft="@mipmap/menu_love_white"
+                android:text="夜间"
+
+
+            />
+        </RadioGroup>
+    </LinearLayout>
 </LinearLayout>

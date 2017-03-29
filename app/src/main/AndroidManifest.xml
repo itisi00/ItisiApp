@@ -54,7 +54,58 @@
             android:label="@string/title_activity_tab_and_viewpager"
             android:theme="@style/AppThemeBack">
         </activity>
-        <activity android:name=".mvp.ui.birthday.BirthdayActivity">
+        <activity
+            android:name=".mvp.ui.birthday.BirthdayActivity"
+            android:theme="@style/AppThemeBack">
+            >
+        </activity>
+        <activity
+            android:name=".mvp.ui.user.UserActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.about.AboutActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.account.AccountActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.agenda.AgendaActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.album.AlbumActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.footprint.FootprintActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.collection.CollectionActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.setting.SettingActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.read.ReadActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.recruit.RecruitActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.rental.RentalActivity"
+            android:theme="@style/AppThemeBack">
+        </activity>
+        <activity
+            android:name=".mvp.ui.select.SelectActivity"
+            android:theme="@style/AppThemeBack">
         </activity>
     </application>
 

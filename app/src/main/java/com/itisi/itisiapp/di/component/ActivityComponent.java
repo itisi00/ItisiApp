@@ -4,9 +4,21 @@ import android.app.Activity;
 
 import com.itisi.itisiapp.di.modeule.ActivityModule;
 import com.itisi.itisiapp.di.scope.PerActivity;
+import com.itisi.itisiapp.mvp.ui.about.AboutActivity;
+import com.itisi.itisiapp.mvp.ui.account.AccountActivity;
+import com.itisi.itisiapp.mvp.ui.agenda.AgendaActivity;
+import com.itisi.itisiapp.mvp.ui.album.AlbumActivity;
 import com.itisi.itisiapp.mvp.ui.birthday.BirthdayActivity;
+import com.itisi.itisiapp.mvp.ui.collection.CollectionActivity;
+import com.itisi.itisiapp.mvp.ui.footprint.FootprintActivity;
 import com.itisi.itisiapp.mvp.ui.main.MainActivity;
 import com.itisi.itisiapp.mvp.ui.main.test.Test2Activity;
+import com.itisi.itisiapp.mvp.ui.read.ReadActivity;
+import com.itisi.itisiapp.mvp.ui.recruit.RecruitActivity;
+import com.itisi.itisiapp.mvp.ui.rental.RentalActivity;
+import com.itisi.itisiapp.mvp.ui.select.SelectActivity;
+import com.itisi.itisiapp.mvp.ui.setting.SettingActivity;
+import com.itisi.itisiapp.mvp.ui.user.UserActivity;
 
 import dagger.Component;
 
@@ -16,13 +28,34 @@ import dagger.Component;
  * desc:
  */
 @PerActivity
-@Component(dependencies = AppComponent.class,modules = {ActivityModule.class})
+@Component(dependencies = AppComponent.class, modules = {ActivityModule.class})
 public interface ActivityComponent {
     Activity getActivity();
+
+    //主页
     void inject(MainActivity activity);
+    void inject(RecruitActivity activity);
+    void inject(RentalActivity activity);
+    void inject(ReadActivity activity);
+    void inject(SelectActivity activity);
+
+    //测试
     void inject(Test2Activity activity);
-//    void inject(TabAndViewpagerActivity activity);
+
+    //    void inject(TabAndViewpagerActivity activity);
+    //左侧菜单中的
+    void inject(AgendaActivity activity);
     void inject(BirthdayActivity activity);
+    void inject(AccountActivity activity);
+    void inject(FootprintActivity activity);
+    void inject(AlbumActivity activity);
+    void inject(CollectionActivity activity);
+    void inject(UserActivity activity);
+    void inject(AboutActivity activity);
+    void inject(SettingActivity activity);
+
+
+
 
     //注入其他activity
 }
