@@ -74,6 +74,10 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         mSwipeBackLayout = getSwipeBackLayout();
         //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+       // mSwipeBackLayout.setEdgeSize(20);//滑动范围???? 如果是那就太好了
+        //这么设置不明显 修改源码 getEdgeTouched
+//        mSwipeBackLayout.setRotationY(50F);
+
         //        /**
         //         * 获取状态栏高度——方法1
         //         * */

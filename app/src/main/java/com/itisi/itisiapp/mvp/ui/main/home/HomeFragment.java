@@ -12,11 +12,10 @@ import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.app.ItisiApp;
 import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
 import com.itisi.itisiapp.mvp.ui.base.BaseFragment;
+import com.itisi.itisiapp.mvp.ui.main.test.TabAndViewpagerActivity;
 import com.itisi.itisiapp.mvp.ui.read.ReadActivity;
-import com.itisi.itisiapp.mvp.ui.recruit.RecruitActivity;
 import com.itisi.itisiapp.mvp.ui.rental.RentalActivity;
 import com.itisi.itisiapp.mvp.ui.select.SelectActivity;
-import com.itisi.itisiapp.mvp.ui.user.UserActivity;
 import com.itisi.itisiapp.utils.SceneAnim;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
@@ -116,12 +115,9 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.iv_left_header:
-                startActivity(new Intent(ItisiApp.getInstance(), UserActivity.class));
-                SceneAnim.openActivityByScaleAlpha(getActivity());
-                break;
             case R.id.tv_home_recuit:
-                startActivity(new Intent(ItisiApp.getInstance(), RecruitActivity.class));
+//                startActivity(new Intent(ItisiApp.getInstance(), RecruitActivity.class));
+                startActivity(new Intent(ItisiApp.getInstance(), TabAndViewpagerActivity.class));
                 SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
             case R.id.tv_home_rental:

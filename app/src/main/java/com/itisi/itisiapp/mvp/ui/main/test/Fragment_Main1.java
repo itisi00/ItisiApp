@@ -5,9 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.itisi.itisiapp.R;
 import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
 import com.itisi.itisiapp.mvp.ui.adapter.MeiZhiAdapter;
+import com.itisi.itisiapp.mvp.ui.adapter.TestAdapter;
 import com.itisi.itisiapp.mvp.ui.base.BaseFragment;
 import com.itisi.itisiapp.mvp.ui.main.MainContract;
 import com.itisi.itisiapp.mvp.ui.main.MainPresenter;
@@ -28,6 +30,7 @@ public class Fragment_Main1 extends BaseFragment<MainPresenter> implements MainC
 
     MeiZhiAdapter mAdapter;
     List<GankFuLiEntity>mList;
+    private BaseQuickAdapter mHomeAdapter;
 
 
     @Override
@@ -49,11 +52,16 @@ public class Fragment_Main1 extends BaseFragment<MainPresenter> implements MainC
     public void initData() {
         mList=new ArrayList<>();
         mPresenter.getData();
-        mAdapter=new MeiZhiAdapter(mContext,mList);
 
+//        mAdapter=new MeiZhiAdapter(mContext,mList);
+//
+//        rv_meizhi.setLayoutManager(new LinearLayoutManager(mContext));
+//        rv_meizhi.setAdapter(mAdapter );
 
+        mHomeAdapter = new TestAdapter(R.layout.meizhi_item, mList);
         rv_meizhi.setLayoutManager(new LinearLayoutManager(mContext));
-        rv_meizhi.setAdapter(mAdapter );
+        mHomeAdapter.openLoadAnimation();
+        rv_meizhi.setAdapter(mHomeAdapter);
 
     }
 
@@ -62,6 +70,7 @@ public class Fragment_Main1 extends BaseFragment<MainPresenter> implements MainC
     public void showContent(List<GankFuLiEntity> list) {
         mList.clear();
         mList.addAll(list);
-        mAdapter.notifyDataSetChanged();
+       // mAdapter.notifyDataSetChanged();
+        mHomeAdapter.notifyDataSetChanged();
     }
 }
