@@ -63,8 +63,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         super.onViewCreated(view, savedInstanceState);
         mPresenter.attachView(this);
         mUnbinder= ButterKnife.bind(this,mView);
+        initLinstener();
         //其实这儿还差很多代码
-        initEventAndData();
+        initData();
     }
 
     @Override
@@ -79,17 +80,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         if (mPresenter!=null){
             mPresenter.detachView();
         }
-
     }
 
     //初始化数据
     public abstract int getLayoutId();
     public abstract void initInject();
-    public abstract void initEventAndData();
+    public abstract void initData();
     //设置事件
-    public void initLinstener(){
-
-    }
+    public void initLinstener(){}
 
 
 }

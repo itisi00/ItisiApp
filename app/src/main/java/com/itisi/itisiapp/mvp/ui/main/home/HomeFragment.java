@@ -17,6 +17,7 @@ import com.itisi.itisiapp.mvp.ui.recruit.RecruitActivity;
 import com.itisi.itisiapp.mvp.ui.rental.RentalActivity;
 import com.itisi.itisiapp.mvp.ui.select.SelectActivity;
 import com.itisi.itisiapp.mvp.ui.user.UserActivity;
+import com.itisi.itisiapp.utils.SceneAnim;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
 import com.youth.banner.Banner;
@@ -71,7 +72,7 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     }
 
     @Override
-    public void initEventAndData() {
+    public void initData() {
 
         banner_main.setBannerAnimation(Transformer.DepthPage);
 
@@ -117,20 +118,24 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
         switch (v.getId()) {
             case R.id.iv_left_header:
                 startActivity(new Intent(ItisiApp.getInstance(), UserActivity.class));
+                SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
             case R.id.tv_home_recuit:
                 startActivity(new Intent(ItisiApp.getInstance(), RecruitActivity.class));
+                SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
             case R.id.tv_home_rental:
                 startActivity(new Intent(ItisiApp.getInstance(), RentalActivity.class));
+                SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
             case R.id.tv_home_read:
                 startActivity(new Intent(ItisiApp.getInstance(), ReadActivity.class));
+                SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
             case R.id.tv_home_select:
                 startActivity(new Intent(ItisiApp.getInstance(), SelectActivity.class));
+                SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
-
         }
 
     }

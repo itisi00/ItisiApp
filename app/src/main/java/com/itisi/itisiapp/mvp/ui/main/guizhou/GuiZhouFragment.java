@@ -28,7 +28,7 @@ public class GuiZhouFragment extends BaseFragment<GuiZhouPresenter> implements G
     }
 
     @Override
-    public void initEventAndData() {
+    public void initData() {
 
     }
 

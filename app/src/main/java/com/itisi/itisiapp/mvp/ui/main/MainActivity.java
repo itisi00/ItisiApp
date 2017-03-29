@@ -2,13 +2,12 @@ package com.itisi.itisiapp.mvp.ui.main;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
+import android.widget.RadioButton;
 
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -33,6 +32,7 @@ import com.itisi.itisiapp.mvp.ui.main.news.NewsFragment;
 import com.itisi.itisiapp.mvp.ui.setting.SettingActivity;
 import com.itisi.itisiapp.mvp.ui.user.UserActivity;
 import com.itisi.itisiapp.utils.ClickTree;
+import com.itisi.itisiapp.utils.SceneAnim;
 import com.itisi.itisiapp.utils.ToastUtil;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
@@ -57,7 +57,7 @@ import static com.itisi.itisiapp.utils.ResourceUtil.readStringSource;
  * 如果不需要 则可直接继承 BaseActivity
  */
 @UseRxBus
-public class MainActivity extends BaseRxBusActivity<MainPresenter> implements MainContract.View, RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class MainActivity extends BaseRxBusActivity<MainPresenter> implements MainContract.View, View.OnClickListener {
     //左侧
     @BindView(R.id.iv_left_header)
     protected ImageView iv_left_header;
@@ -69,22 +69,38 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
     @BindView(R.id.bottom_main)
     BottomNavigationBar bottom_main;
 
-    @BindView(R.id.rg_left_menu)
-    RadioGroup rg_left_menu;
-    @BindView(R.id.rg_left_bottom)
-    RadioGroup rg_left_bottom;
+//    @BindView(R.id.rg_left_menu)
+//    RadioGroup rg_left_menu;
+//    @BindView(R.id.rg_left_bottom)
+//    RadioGroup rg_left_bottom;
 
+    @BindView(R.id.rb_agenda)
+    RadioButton rb_agenda;
+    @BindView(R.id.rb_birthday)
+    RadioButton rb_birthday;
+    @BindView(R.id.rb_account)
+    RadioButton rb_account;
+    @BindView(R.id.rb_footprint)
+    RadioButton rb_footprint;
+    @BindView(R.id.rb_album)
+    RadioButton rb_album;
+    @BindView(R.id.rb_collection)
+    RadioButton rb_collection;
+    @BindView(R.id.rb_setting)
+    RadioButton rb_setting;
+    @BindView(R.id.rb_theme)
+    RadioButton rb_theme;
 
-    HomeFragment mHomeFragment;
-    NewsFragment mNewsFragment;
-    GuiZhouFragment mGuiZhouFragment;
-    LeisureFragment mLeisureFragment;
-    ChatFragment mChatFragment;
-    //点击树
-    ClickTree mClickTree = new ClickTree(2);
-    private List<Fragment> mFragments;
-    private Fragment mCurrentFragment;
-    private boolean isShown = false;//菜单是否处于打开模式
+    HomeFragment mHomeFragment;//主页
+    NewsFragment mNewsFragment;//新闻
+    GuiZhouFragment mGuiZhouFragment;//大贵州
+    LeisureFragment mLeisureFragment;//休闲
+    ChatFragment mChatFragment;//聊天
+
+    ClickTree mClickTree = new ClickTree(2); //点击树
+    private List<Fragment> mFragments;//main 中的几个页面的fragment集合
+    private Fragment mCurrentFragment;//home中当前显示的fragment
+    private boolean isShown = false;//菜单是否处于打开状态
 
     @Override
     protected void initView() {
@@ -161,13 +177,19 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
 
             }
         });
-        //头像
-        rg_left_menu.setOnCheckedChangeListener(this);
-        rg_left_bottom.setOnCheckedChangeListener(this);
+
         //左侧菜单点击事件
         iv_left_header.setOnClickListener(this);
+        rb_agenda.setOnClickListener(this);
+        rb_birthday.setOnClickListener(this);
+        rb_account.setOnClickListener(this);
+        rb_footprint.setOnClickListener(this);
+        rb_album.setOnClickListener(this);
+        rb_collection.setOnClickListener(this);
+        rb_setting.setOnClickListener(this);
+        rb_theme.setOnClickListener(this);
 
-
+       //侧滑菜单 滑动监听
         mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
             @Override
             public void onDrawerStateChange(int oldState, int newState) {
@@ -184,8 +206,6 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
             }
         });
 
-
-
     }
 
     @Override
@@ -198,6 +218,9 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
         return R.layout.activity_main;
     }
 
+    /**
+     * 设置状态栏颜色 颜色瞎写的 以后慢慢修改
+     */
     @Override
     public void setStatusBarColor() {
         super.setStatusBarColor();
@@ -215,11 +238,18 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
         return false;
     }
 
+    /**
+     * 设置toolbar右侧标题
+     * @return
+     */
     @Override
     public String setSubTitle() {
         return readStringSource(this, R.string.icon_temperature);
     }
 
+    /**
+     * toolbar 右侧标题 点击事件
+     */
     @Override
     protected void onSubTitleViewClick() {
         TastyToast.makeText(this, "跳转天气页面?", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
@@ -261,16 +291,22 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
         //        });
     }
 
+    /**
+     * 显示错误信息
+     * @param msg
+     */
     @Override
     public void showError(String msg) {
 
     }
 
+    /**
+     * 初始化数据
+     */
     @Override
     protected void initData() {
         ImageLoadProxy.getInstance().load(new ImageLoadConfiguration.Builder(this).url(R.mipmap.ic_launcher)
                 .isCircle(true).defaultImageResId(R.mipmap.ic_launcher).imageView(iv_left_header).build());
-
     }
 
     /**
@@ -312,18 +348,14 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
      * 设置默认显示的fragment
      */
     private void setDefaultFragment() {
-        //        Logger.i(mHomeFragment.toString());//看看是不是同一个对象
-
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fl_main, mHomeFragment);
         transaction.commit();
-
     }
 
     /**
      * 显示内容 这个方法可能会改动
-     *
      * @param list
      */
     @Override
@@ -337,7 +369,6 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
             isShown = false;
             mDrawer.closeMenu(true);
         } else {
-            //            super.onBackPressed();
             boolean clickResult = mClickTree.completeClickCount();
             if (clickResult) {
                 System.exit(0);//直接杀死进程???? 是不是不妥
@@ -347,49 +378,52 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
         }
     }
 
-
+    /**
+     * 点击事件
+     * @param v
+     */
     @Override
-    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        switch (checkedId) {
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_left_header:
+                startActivity(new Intent(ItisiApp.getInstance(), UserActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
+                break;
             case R.id.rb_agenda:
                 startActivity(new Intent(ItisiApp.getInstance(), AgendaActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_birthday:
                 startActivity(new Intent(ItisiApp.getInstance(), BirthdayActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_account:
                 startActivity(new Intent(ItisiApp.getInstance(), AccountActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_footprint:
                 startActivity(new Intent(ItisiApp.getInstance(), FootprintActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_album:
                 startActivity(new Intent(ItisiApp.getInstance(), AlbumActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_collection:
                 startActivity(new Intent(ItisiApp.getInstance(), CollectionActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_about:
                 startActivity(new Intent(ItisiApp.getInstance(), AboutActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_setting:
                 startActivity(new Intent(ItisiApp.getInstance(), SettingActivity.class));
+                SceneAnim.openActivityByScaleAlpha(this);
                 break;
             case R.id.rb_theme:
                 ToastUtil.Success("主题设置/切换");
                 break;
-
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.iv_left_header:
-                startActivity(new Intent(ItisiApp.getInstance(), UserActivity.class));
-                break;
-
         }
 
     }

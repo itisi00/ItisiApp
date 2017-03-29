@@ -26,7 +26,7 @@ public class ChatFragment  extends BaseFragment<ChatPresenter> implements ChatCo
     }
 
     @Override
-    public void initEventAndData() {
+    public void initData() {
 
     }
 

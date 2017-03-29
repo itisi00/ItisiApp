@@ -46,7 +46,7 @@ public class Fragment_Main1 extends BaseFragment<MainPresenter> implements MainC
     }
 
     @Override
-    public void initEventAndData() {
+    public void initData() {
         mList=new ArrayList<>();
         mPresenter.getData();
         mAdapter=new MeiZhiAdapter(mContext,mList);

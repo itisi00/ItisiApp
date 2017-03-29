@@ -26,7 +26,7 @@ public class NewsFragment  extends BaseFragment<NewsPresenter> implements NewsCo
     }
 
     @Override
-    public void initEventAndData() {
+    public void initData() {
 
     }
 

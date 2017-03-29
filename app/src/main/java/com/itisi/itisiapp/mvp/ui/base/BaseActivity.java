@@ -12,6 +12,7 @@ import com.itisi.itisiapp.app.ItisiApp;
 import com.itisi.itisiapp.di.component.ActivityComponent;
 import com.itisi.itisiapp.di.component.DaggerActivityComponent;
 import com.itisi.itisiapp.di.modeule.ActivityModule;
+import com.itisi.itisiapp.utils.SceneAnim;
 import com.jaeger.library.StatusBarUtil;
 import com.orhanobut.logger.Logger;
 
@@ -90,15 +91,11 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     @Override
     protected void onStart() {
         super.onStart();
-        /**
-         * 判断是否有toolbar 并默认显示返回按钮
-         */
+       //判断是否有toolbar 并默认显示返回按钮
         if (getToolbar() != null && isShowBacking()) {
             showBack();
         }
-        /**
-         * 设置大标题
-         */
+        //设置大标题
         if (getToolbar() != null && !TextUtils.isEmpty(setToolbarTitle())) {
             if (getToolbar() != null) {
                 mToolbarTitle.setText(setToolbarTitle());
@@ -138,7 +135,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 是否显示返回按钮
-     *
      * @return
      */
     public boolean isShowBacking() {
@@ -147,7 +143,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 设置toolbar右侧图标
-     *
      * @return
      */
     public int setSubTitleIcon() {
@@ -156,7 +151,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 获取标题控件
-     *
      * @return
      */
     public TextView getTitleView() {
@@ -165,7 +159,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 获取副标题控件
-     *
      * @return
      */
     public TextView getSubTitleView() {
@@ -174,7 +167,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * toolbar的标题 重写即可
-     *
      * @return
      */
     public String setToolbarTitle() {
@@ -206,8 +198,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     /**
      * toolbar右侧view的点击事件 由子类实现
      */
-    protected  void onSubTitleViewClick(){
-    }
+    protected  void onSubTitleViewClick(){}
 
     /**
      * 注入
@@ -227,7 +218,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 加载布局文件
-     *
      * @return
      */
     public abstract int getConentlayout();
@@ -247,19 +237,19 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         //        StatusBarUtil.setColorForSwipeBack(this, Color.parseColor("#ff0000"), 0);//设置滑动返回的activity颜色
     }
 
-    protected void initView() {
+    /**
+     * 初始化其他组件 也行有需要
+     */
+    protected void initView() {}
 
-    }
-
-    protected void initListener() {
-
-    }
-
+    /**
+     * 初始化事件监听
+     */
+    protected void initListener() {}
     /**
      * 初始化数据---如果需要加载数据 则去加载数据
      */
-    protected void initData() {
-    }
+    protected void initData() {}
 
     @Override
     protected void onDestroy() {
@@ -269,12 +259,14 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         }
         mUnbinder.unbind();
     }
-
+    /**
+     * 后退键事件
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        overridePendingTransition(0, R.anim.scale_out);
+        SceneAnim.closeActivityByScaleAlpha(this);
     }
 
 

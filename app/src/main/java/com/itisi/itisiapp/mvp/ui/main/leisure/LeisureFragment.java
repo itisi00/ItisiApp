@@ -26,7 +26,7 @@ public class LeisureFragment extends BaseFragment<LeisurePresenter> implements L
     }
 
     @Override
-    public void initEventAndData() {
+    public void initData() {
 
     }
 
