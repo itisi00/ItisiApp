@@ -107,6 +107,8 @@
             android:name=".mvp.ui.select.SelectActivity"
             android:theme="@style/AppThemeBack">
         </activity>
+        <activity android:name=".mvp.ui.login.LoginRegisterActivity">
+        </activity>
     </application>
 
 </manifest>

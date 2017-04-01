@@ -1322,9 +1322,9 @@ public class ViewDragHelper {
     }
 
     private int getEdgeTouched(int x, int y) {
-        int result = 0;
-        // TODO: 2017/3/29  修改滑动范围
-        result = EDGE_LEFT;//这样每次都是全屏左滑删除
+        int result = 0; // 默认 result = 0
+        // TODO: 2017/3/29  修改滑动范围 最终还是没修改  觉着原来的挺好的 ^~^
+        //result = EDGE_LEFT;//这样每次都是全屏左滑删除
         //解决只有点击屏幕左边才有响应的问题
         if (x < mParentView.getLeft() + mEdgeSize)
             result = EDGE_LEFT;

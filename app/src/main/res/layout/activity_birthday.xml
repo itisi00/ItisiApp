@@ -8,8 +8,28 @@
     android:orientation="vertical">
 
     <include layout="@layout/toolbar"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:text="生日提醒"
+    <TextView
+        android:id="@+id/tv_birthday_testdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:text="日期"
     />
-
+    <TextView
+        android:id="@+id/tv_birthday_testtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="时间"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openDate"
+        android:text="日期"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openTime"
+        android:text="时间"
+    />
 </LinearLayout>
