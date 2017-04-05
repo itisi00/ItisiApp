@@ -14,8 +14,10 @@
     />
 
     <Button
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:onClick="openActionSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openActionSheet"
+    android:text="openActionSheet"
     />
 
 </LinearLayout>

@@ -34,6 +34,7 @@ public class AlbumActivity extends BaseRxBusActivity<AlbumPresenter> implements 
     }
 
     public void openActionSheet(View view){
-        // TODO: 2017/3/30   测试 actionsheet 
+        // TODO: 2017/3/30   测试 actionsheet
+
     }
 }
