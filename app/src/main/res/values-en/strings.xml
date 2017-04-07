@@ -25,6 +25,13 @@
     <string name="home_menu_read">read</string>
     <string name="home_menu_select">select</string>
 
+    <string name="guizhou_nation">nation</string>
+    <string name="guizhou_scenic">scenic</string>
+    <string name="guizhou_speciality">speciality</string>
+    <string name="guizhou_blacklist">blacklist</string>
+
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
 

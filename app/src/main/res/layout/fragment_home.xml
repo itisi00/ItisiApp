@@ -7,7 +7,6 @@
               tools:context="com.itisi.itisiapp.mvp.ui.main.home.HomeFragment"
 >
 
-
     <com.youth.banner.Banner
         android:id="@+id/banner_main"
         android:layout_width="match_parent"
@@ -21,73 +20,32 @@
         android:background="#0094ff"
         android:orientation="horizontal"
         android:paddingTop="@dimen/dimen_20"
-
     >
         <TextView
             android:id="@+id/tv_home_recuit"
-            style="@style/HomeMenu"
+            style="@style/MainMenu"
             android:drawableTop="@mipmap/menu_temp_black"
             android:text="@string/home_menu_recuit"
         />
         <TextView
             android:id="@+id/tv_home_rental"
-            style="@style/HomeMenu"
+            style="@style/MainMenu"
             android:drawableTop="@mipmap/menu_temp_black"
             android:text="@string/home_menu_rental"
-
         />
         <TextView
             android:id="@+id/tv_home_read"
-            style="@style/HomeMenu"
+            style="@style/MainMenu"
             android:drawableTop="@mipmap/menu_temp_black"
             android:text="@string/home_menu_read"
-
         />
         <TextView
             android:id="@+id/tv_home_select"
-            style="@style/HomeMenu"
+            style="@style/MainMenu"
             android:drawableTop="@mipmap/menu_temp_black"
             android:text="@string/home_menu_select"
-
         />
-
     </LinearLayout>
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="#0094ff"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingTop="@dimen/dimen_20"-->
-
-    <!--&gt;-->
-        <!--<TextView-->
-            <!--style="@style/HomeMenu"-->
-            <!--android:drawableTop="@mipmap/menu_temp_black"-->
-            <!--android:text="资料"-->
-
-        <!--/>-->
-        <!--<TextView-->
-            <!--style="@style/HomeMenu"-->
-            <!--android:drawableTop="@mipmap/menu_temp_black"-->
-            <!--android:text="招聘2"-->
-
-        <!--/>-->
-        <!--<TextView-->
-            <!--style="@style/HomeMenu"-->
-            <!--android:drawableTop="@mipmap/menu_temp_black"-->
-            <!--android:text="招聘3"-->
-
-        <!--/>-->
-        <!--<TextView-->
-            <!--style="@style/HomeMenu"-->
-            <!--android:drawableTop="@mipmap/menu_temp_black"-->
-            <!--android:text="招聘4"-->
-
-        <!--/>-->
-
-    <!--</LinearLayout>-->
-
-
 
 
 </LinearLayout>

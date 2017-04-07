@@ -59,7 +59,7 @@
 
     </style>
 
-    <style name="HomeMenu">
+    <style name="MainMenu">
         <item name="android:layout_width">@dimen/dimen_0</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>

@@ -1,0 +1,36 @@
+package com.itisi.itisiapp.mvp.ui.speciality;
+
+import com.itisi.itisiapp.R;
+import com.itisi.itisiapp.mvp.model.entity.GankFuLiEntity;
+import com.itisi.itisiapp.mvp.ui.base.BaseRxBusActivity;
+import com.itisi.itisiapp.mvp.ui.birthday.BirthdayContract;
+
+import java.util.List;
+
+/**
+ * 特产
+ */
+public class SpecialityActivity extends BaseRxBusActivity<SpecialityPresenter> implements BirthdayContract.View {
+
+
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    public int getConentlayout() {
+        return R.layout.activity_speciality;
+    }
+
+    @Override
+    public void showError(String msg) {
+
+    }
+
+    @Override
+    public void showContent(List<GankFuLiEntity> list) {
+
+    }
+}

@@ -109,6 +109,14 @@
         </activity>
         <activity android:name=".mvp.ui.login.LoginRegisterActivity">
         </activity>
+        <activity android:name=".mvp.ui.nation.NationActivity">
+        </activity>
+        <activity android:name=".mvp.ui.scenic.ScenicActivity">
+        </activity>
+        <activity android:name=".mvp.ui.speciality.SpecialityActivity">
+        </activity>
+        <activity android:name=".mvp.ui.blacklist.BlacklistActivity">
+        </activity>
     </application>
 
 </manifest>

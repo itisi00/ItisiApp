@@ -107,11 +107,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingTop="@dimen/dimen_5"
         >
             <!-- todo 招聘 item-->
             <ImageView android:layout_width="@dimen/dimen_30"
                        android:layout_height="@dimen/dimen_30"
+                       android:layout_marginLeft="@dimen/dimen_10"
                         android:src="@color/colorAccent"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_30"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:gravity="center_vertical"
+                android:text="CEO"
+
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_30"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:gravity="center_vertical"
+                android:text="未融资"
+
             />
         </LinearLayout>
 

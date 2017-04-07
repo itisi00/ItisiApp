@@ -1,13 +1,51 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.itisi.itisiapp.mvp.ui.main.guizhou.GuiZhouFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/blue_btn_bg_color"
+              android:orientation="vertical"
+              tools:context="com.itisi.itisiapp.mvp.ui.main.home.HomeFragment"
+>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.youth.banner.Banner
+        android:id="@+id/banner_guizhou"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="guizhou"/>
+        android:layout_height="180dp"
+        android:background="#cccccc">
 
-</FrameLayout>
+    </com.youth.banner.Banner>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0094ff"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dimen_20"
+    >
+        <TextView
+            android:id="@+id/tv_guizhou_nation"
+            style="@style/MainMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/guizhou_nation"
+        />
+        <TextView
+            android:id="@+id/tv_guizhou_scenic"
+            style="@style/MainMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/guizhou_scenic"
+        />
+        <TextView
+            android:id="@+id/tv_guizhou_speciality"
+            style="@style/MainMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/guizhou_speciality"
+        />
+        <TextView
+            android:id="@+id/tv_guizhou_blacklist"
+            style="@style/MainMenu"
+            android:drawableTop="@mipmap/menu_temp_black"
+            android:text="@string/guizhou_blacklist"
+        />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -30,26 +30,21 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
+ * 主页
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeContract.View,View.OnClickListener  {
 
     @BindView(R.id.banner_main)
-    Banner banner_main;
+    Banner banner_home;//轮播图
     @BindView(R.id.tv_home_recuit)
-    TextView tv_home_recuit;
-
+    TextView tv_home_recuit;//招聘
     @BindView(R.id.tv_home_rental)
-    TextView tv_home_rental;
-
+    TextView tv_home_rental;//租房
     @BindView(R.id.tv_home_read)
-    TextView tv_home_read;
-
+    TextView tv_home_read;//阅读
     @BindView(R.id.tv_home_select)
-    TextView tv_home_select;
-
-
-
+    TextView tv_home_select;//微信精选
 
     @Override
     public int getLayoutId() {
@@ -63,7 +58,7 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
 
     @Override
     public void initLinstener() {
-        //主页
+        //主页 菜单 点击事件
         tv_home_recuit.setOnClickListener(this);
         tv_home_rental.setOnClickListener(this);
         tv_home_read.setOnClickListener(this);
@@ -73,8 +68,8 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     @Override
     public void initData() {
 
-        banner_main.setBannerAnimation(Transformer.DepthPage);
-
+        banner_home.setBannerAnimation(Transformer.DepthPage);
+        //事实上  这个数据 应该在presenter 里面获取 临时征用了
        List<String> images=new ArrayList<>();
         List<String>titles=new ArrayList<>();
         titles.add("风景1");
@@ -87,7 +82,7 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
         images.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490616877150&di=406214a0adc6c4f6bb2f5dc51c37dad9&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1608%2F31%2Fc12%2F26348420_1472658812267_800x800.jpg");
         images.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490616877149&di=0d90b7bbc175410a715bf59cec6d153b&imgtype=0&src=http%3A%2F%2Fbbs.crsky.com%2F1236983883%2FMon_1209%2F25_187069_eaac13adbd074a5.jpg");
         images.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490616917781&di=edd04f734bb2a25485d385525f488644&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201505%2F27%2F172521n6az6c7477d66cxa.jpg");
-        banner_main.setImageLoader(new ImageLoader() {
+        banner_home.setImageLoader(new ImageLoader() {
             @Override
             public void displayImage(Context context, Object o, ImageView imageView) {
                 ImageLoadProxy.getInstance().load(new ImageLoadConfiguration.Builder(ItisiApp.getInstance()).url(o)
@@ -96,11 +91,11 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
             }
         });
 
-        banner_main.setImages(images);
-        banner_main.setBannerTitles(titles);
+        banner_home.setImages(images);
+        banner_home.setBannerTitles(titles);
         ////指示器 垂直显示 默认水平显示
-        banner_main.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-        banner_main.start();
+        banner_home.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+//        banner_home.start(); // 在onstart 里面开始 播放
     }
 
     @Override
@@ -113,7 +108,6 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.tv_home_recuit:
 //                startActivity(new Intent(ItisiApp.getInstance(), RecruitActivity.class));
@@ -138,12 +132,12 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     @Override
     public void onStart() {
         super.onStart();
-        banner_main.startAutoPlay();//轮播图 开始轮播
+        banner_home.startAutoPlay();//轮播图 开始轮播
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        banner_main.stopAutoPlay();//轮播图 结束轮播
+        banner_home.stopAutoPlay();//轮播图 结束轮播
     }
 }
