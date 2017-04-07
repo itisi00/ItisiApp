@@ -6,6 +6,7 @@
     android:background="@mipmap/left_menu_back"
     android:orientation="vertical"
 >
+    <!--左侧菜单 -->
 
     <RelativeLayout
         android:layout_width="match_parent"

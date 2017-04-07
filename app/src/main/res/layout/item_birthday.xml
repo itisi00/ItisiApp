@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimen_3"
+>
+
+    <!-- 吸附 功能 一周内 一个月内 三个月内 -->
+
+    <ImageView
+        android:layout_width="@dimen/dimen_40"
+        android:layout_height="@dimen/dimen_40"
+        android:src="@mipmap/fuck"
+    />
+    <RelativeLayout android:layout_width="0dp"
+                    android:layout_height="@dimen/dimen_40"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_marginRight="@dimen/dimen_10"
+                    android:layout_weight="1"
+    >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小三"
+            android:textSize="@dimen/txtsize_10"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="04-07"
+            android:textSize="@dimen/txtsize_10"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="8天"
+            android:textColor="#ff0000"
+            android:textSize="@dimen/txtsize_15"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="后过18岁生日"
+            android:textSize="@dimen/txtsize_10"
+
+        />
+    </RelativeLayout>
+
+</LinearLayout>

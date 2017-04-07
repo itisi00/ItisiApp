@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.TabLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                         xmlns:app="http://schemas.android.com/apk/res-auto"
-                                         android:id="@+id/tablayout_main"
-                                         android:layout_width="match_parent"
-                                         android:layout_height="35dp"
-                                         android:background="@color/colorAccent"
-                                         android:clipToPadding="false"
-                                         android:minHeight="?attr/actionBarSize"
-                                         android:orientation="vertical"
-                                         app:tabBackground="@drawable/tablayout_main_selected"
-                                         app:tabIndicatorColor="@color/colorPrimary"
-                                         app:tabIndicatorHeight="2dp"
-                                         app:tabMode="scrollable"
-                                         app:tabSelectedTextColor="#cc33ff"
-                                         app:tabTextColor="@color/colorWhite"
+<android.support.design.widget.TabLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tablayout_main"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:background="@color/colorAccent"
+    android:clipToPadding="false"
+    android:minHeight="?attr/actionBarSize"
+    android:orientation="vertical"
+    app:tabBackground="@drawable/tablayout_main_selected"
+    app:tabIndicatorColor="@color/colorPrimary"
+    app:tabIndicatorHeight="2dp"
+    app:tabMode="scrollable"
+    app:tabSelectedTextColor="#cc33ff"
+    app:tabTextColor="@color/colorWhite"
 >
 
-    <android.support.design.widget.TabItem android:layout_width="wrap_content"
-                                           android:layout_height="wrap_content"
-    android:text="视窗"
+    <android.support.design.widget.TabItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="视窗"
     />
 
 </android.support.design.widget.TabLayout>
