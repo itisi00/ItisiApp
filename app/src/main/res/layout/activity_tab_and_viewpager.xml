@@ -5,10 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context="com.itisi.itisiapp.mvp.ui.main.test.TabAndViewpagerActivity">
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="match_parent"
+                  android:background="@color/blue_btn_bg_color"
                   android:orientation="vertical"
     >
 

@@ -16,7 +16,7 @@ import com.itisi.itisiapp.mvp.ui.main.test.Fragment_Main4;
  */
 
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
-    private String[] mTitles=new String[]{"妹纸","科技","贵州","旅游"};
+    private String[] mTitles=new String[]{"妹纸","Android","IOS","JAVA"};
     private Fragment_Main1 mFragment_main1;
     private Fragment_Main2 mFragment_main2;
     private Fragment_Main3 mFragment_main3;

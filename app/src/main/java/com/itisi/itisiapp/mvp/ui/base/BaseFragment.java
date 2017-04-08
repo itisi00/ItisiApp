@@ -3,6 +3,7 @@ package com.itisi.itisiapp.mvp.ui.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import com.itisi.itisiapp.app.ItisiApp;
 import com.itisi.itisiapp.di.component.DaggerFragmentComponent;
 import com.itisi.itisiapp.di.component.FragmentComponent;
 import com.itisi.itisiapp.di.modeule.FragmentModule;
+import com.jaeger.library.StatusBarUtil;
 
 import javax.inject.Inject;
 
@@ -54,6 +56,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView=inflater.inflate(getLayoutId(),null);
+       // StatusBarUtil.setTranslucentForImageViewInFragment(getActivity(), null);
         initInject();
         return mView;
     }

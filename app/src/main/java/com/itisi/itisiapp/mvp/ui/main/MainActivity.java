@@ -1,7 +1,7 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -40,7 +40,6 @@ import com.jaeger.library.StatusBarUtil;
 import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingMenuLayout;
-import com.orhanobut.logger.Logger;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.ArrayList;
@@ -69,11 +68,7 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
     @BindView(R.id.bottom_main)
     BottomNavigationBar bottom_main;
 
-//    @BindView(R.id.rg_left_menu)
-//    RadioGroup rg_left_menu;
-//    @BindView(R.id.rg_left_bottom)
-//    RadioGroup rg_left_bottom;
-
+    // 左侧菜单的 item
     @BindView(R.id.rb_agenda)
     RadioButton rb_agenda;
     @BindView(R.id.rb_birthday)
@@ -91,6 +86,7 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
     @BindView(R.id.rb_theme)
     RadioButton rb_theme;
 
+    //5个主界面
     HomeFragment mHomeFragment;//主页
     NewsFragment mNewsFragment;//新闻
     GuiZhouFragment mGuiZhouFragment;//大贵州
@@ -101,6 +97,13 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
     private List<Fragment> mFragments;//main 中的几个页面的fragment集合
     private Fragment mCurrentFragment;//home中当前显示的fragment
     private boolean isShown = false;//菜单是否处于打开状态
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.colorAccent));
+    }
 
     @Override
     protected void initView() {
@@ -159,7 +162,7 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
 
             @Override
             public void onTabUnselected(int position) {
-                Logger.i("unselected:" + position);
+//                Logger.i("unselected:" + position);
                 if (mFragments != null) {
                     if (position < mFragments.size()) {
                         FragmentManager fm = getSupportFragmentManager();
@@ -225,7 +228,8 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
     public void setStatusBarColor() {
         super.setStatusBarColor();
         //5.0 以上有用  4.4.4 以上 随背景颜色
-        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
+//        StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.colorAccent));
+//        StatusBarUtil.setTransparent(MainActivity.this);
     }
 
     /**
@@ -427,4 +431,5 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
         }
 
     }
+
 }

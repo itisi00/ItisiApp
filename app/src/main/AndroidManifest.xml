@@ -107,15 +107,20 @@
             android:name=".mvp.ui.select.SelectActivity"
             android:theme="@style/AppThemeBack">
         </activity>
-        <activity android:name=".mvp.ui.login.LoginRegisterActivity">
+        <activity android:name=".mvp.ui.login.LoginRegisterActivity"
+                  android:theme="@style/AppThemeBack">
         </activity>
-        <activity android:name=".mvp.ui.nation.NationActivity">
+        <activity android:name=".mvp.ui.nation.NationActivity"
+                  android:theme="@style/AppThemeBack">
         </activity>
-        <activity android:name=".mvp.ui.scenic.ScenicActivity">
+        <activity android:name=".mvp.ui.scenic.ScenicActivity"
+                  android:theme="@style/AppThemeBack">
         </activity>
-        <activity android:name=".mvp.ui.speciality.SpecialityActivity">
+        <activity android:name=".mvp.ui.speciality.SpecialityActivity"
+                  android:theme="@style/AppThemeBack">
         </activity>
-        <activity android:name=".mvp.ui.blacklist.BlacklistActivity">
+        <activity android:name=".mvp.ui.blacklist.BlacklistActivity"
+                  android:theme="@style/AppThemeBack">
         </activity>
     </application>
 

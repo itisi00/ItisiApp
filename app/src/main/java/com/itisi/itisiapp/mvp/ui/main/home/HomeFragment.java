@@ -132,7 +132,7 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     @Override
     public void onStart() {
         super.onStart();
-        banner_home.startAutoPlay();//轮播图 开始轮播
+        banner_home.start();//轮播图 开始轮播
     }
 
     @Override

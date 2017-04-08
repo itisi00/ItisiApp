@@ -43,9 +43,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getConentlayout());
+        setStatusBarColor();//设置状态栏
         mUnbinder = ButterKnife.bind(this);//初始化 ButterKnife
         initView();
-        setStatusBarColor();//设置状态栏
         initSwipeBack();//初始化 侧滑返回
 
         initListener();
@@ -232,13 +232,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     public void setStatusBarColor() {
         //1. 设置状态栏颜色
         //        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorContent1));
-        //        StatusBarUtil.setColor(this, Color.parseColor("#0094ff"));
+               // StatusBarUtil.setColor(this, Color.parseColor("#0094ff"));
         //2. 设置状态栏半透明 0 -255
-        // StatusBarUtil.setTranslucent(this, 0);
+         StatusBarUtil.setTranslucent(this, 0);
         //3. 设置状态栏 全透明
-        //        StatusBarUtil.setTransparent(this); //设置这个 不顶到状态烂
-        StatusBarUtil.setTransparent(this);
-        //        StatusBarUtil.setColorForSwipeBack(this, Color.parseColor("#ff0000"), 0);//设置滑动返回的activity颜色
+                //StatusBarUtil.setTransparent(this); //设置这个 不顶到状态烂
+       // StatusBarUtil.setTransparent(this);
+        //StatusBarUtil.setColorForSwipeBack(this, Color.parseColor("#ff0000"), 0);//设置滑动返回的activity颜色
     }
 
     /**

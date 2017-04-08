@@ -62,7 +62,7 @@
         <TextView
             style="@style/MainMenu"
             android:drawableTop="@mipmap/menu_temp_black"
-            android:text="大学城"
+            android:text="儿童丢失"
         />
         <TextView
             style="@style/MainMenu"
@@ -72,7 +72,7 @@
         <TextView
             style="@style/MainMenu"
             android:drawableTop="@mipmap/menu_temp_black"
-            android:text="大学城 test"
+            android:text="大学城"
         />
     </LinearLayout>
 
