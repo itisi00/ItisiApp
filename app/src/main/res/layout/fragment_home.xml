@@ -1,51 +1,94 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/blue_btn_bg_color"
-              android:orientation="vertical"
-              tools:context="com.itisi.itisiapp.mvp.ui.main.home.HomeFragment"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_btn_bg_color"
+    tools:context="com.itisi.itisiapp.mvp.ui.main.home.HomeFragment"
 >
-
-    <com.youth.banner.Banner
-        android:id="@+id/banner_main"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="#cccccc">
-
-    </com.youth.banner.Banner>
     <LinearLayout
+        android:id="@+id/ll_home_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0094ff"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/dimen_20"
+        android:orientation="vertical"
     >
-        <TextView
-            android:id="@+id/tv_home_recuit"
-            style="@style/MainMenu"
-            android:drawableTop="@mipmap/menu_temp_black"
-            android:text="@string/home_menu_recuit"
-        />
-        <TextView
-            android:id="@+id/tv_home_rental"
-            style="@style/MainMenu"
-            android:drawableTop="@mipmap/menu_temp_black"
-            android:text="@string/home_menu_rental"
-        />
-        <TextView
-            android:id="@+id/tv_home_read"
-            style="@style/MainMenu"
-            android:drawableTop="@mipmap/menu_temp_black"
-            android:text="@string/home_menu_read"
-        />
-        <TextView
-            android:id="@+id/tv_home_select"
-            style="@style/MainMenu"
-            android:drawableTop="@mipmap/menu_temp_black"
-            android:text="@string/home_menu_select"
-        />
+        <com.youth.banner.Banner
+            android:id="@+id/banner_main"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#cccccc">
+
+        </com.youth.banner.Banner>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0094ff"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dimen_5"
+        >
+            <TextView
+                android:id="@+id/tv_home_recuit"
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="@string/home_menu_recuit"
+            />
+            <TextView
+                android:id="@+id/tv_home_rental"
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="@string/home_menu_rental"
+            />
+            <TextView
+                android:id="@+id/tv_home_read"
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="@string/home_menu_read"
+            />
+            <TextView
+                android:id="@+id/tv_home_select"
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="@string/home_menu_select"
+            />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0094ff"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dimen_5"
+        >
+            <TextView
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="工具"
+            />
+            <TextView
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="开源库"
+            />
+            <TextView
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="未知"
+            />
+            <TextView
+                style="@style/MainMenu"
+                android:drawableTop="@mipmap/menu_temp_black"
+                android:text="未知"
+            />
+        </LinearLayout>
+
     </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_home_recruit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_home_top">
 
-</LinearLayout>
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

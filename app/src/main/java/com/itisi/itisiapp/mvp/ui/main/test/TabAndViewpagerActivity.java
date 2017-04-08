@@ -89,15 +89,6 @@ public class TabAndViewpagerActivity  extends BaseRxBusActivity {
 //        mSwipeBackLayout.setEnableGesture(false);
     }
 
-    @Override
-    public void setStatusBarColor() {
-        super.setStatusBarColor();
-        //5.0 以上有用  4.4.4 以上 随背景颜色
-        StatusBarUtil.setColor(this, Color.parseColor("#FF4081"));
-        //        StatusBarUtil.setTranslucent(this);
-    }
-
-
 
     @Override
     public String setSubTitle() {

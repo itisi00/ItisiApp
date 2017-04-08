@@ -1,7 +1,6 @@
 package com.itisi.itisiapp.mvp.ui.main;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -36,11 +35,12 @@ import com.itisi.itisiapp.utils.SceneAnim;
 import com.itisi.itisiapp.utils.ToastUtil;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
-import com.jaeger.library.StatusBarUtil;
 import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.mxn.soul.flowingdrawer_core.FlowingMenuLayout;
+import com.orhanobut.logger.Logger;
 import com.sdsmdg.tastytoast.TastyToast;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,9 +57,12 @@ import static com.itisi.itisiapp.utils.ResourceUtil.readStringSource;
  */
 @UseRxBus
 public class MainActivity extends BaseRxBusActivity<MainPresenter> implements MainContract.View, View.OnClickListener {
+
     //左侧
     @BindView(R.id.iv_left_header)
     protected ImageView iv_left_header;
+    @BindView(R.id.pullrefresh)
+    PullToRefreshView mPullToRefreshView ;
     //主页 布局
     @BindView(R.id.drawerlayout)
     FlowingDrawer mDrawer;
@@ -99,11 +102,7 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
     private boolean isShown = false;//菜单是否处于打开状态
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.colorAccent));
-    }
+
 
     @Override
     protected void initView() {
@@ -134,6 +133,8 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
                 .setFirstSelectedPosition(0)
                 .initialise();
 
+        //下拉刷新 设置
+//        mPullToRefreshView.setRefreshStyle(PullToRefreshView.STYLE_SUN);
     }
 
     @Override
@@ -209,6 +210,21 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
             }
         });
 
+        //下拉刷新
+        mPullToRefreshView .setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView .postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Logger.i("刷新数据");
+                        mPullToRefreshView .setRefreshing(false);
+                    }
+                },3000);
+            }
+
+
+        });
     }
 
     @Override
@@ -221,20 +237,9 @@ public class MainActivity extends BaseRxBusActivity<MainPresenter> implements Ma
         return R.layout.activity_main;
     }
 
-    /**
-     * 设置状态栏颜色 颜色瞎写的 以后慢慢修改
-     */
-    @Override
-    public void setStatusBarColor() {
-        super.setStatusBarColor();
-        //5.0 以上有用  4.4.4 以上 随背景颜色
-//        StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.colorAccent));
-//        StatusBarUtil.setTransparent(MainActivity.this);
-    }
 
     /**
      * 主页 不显示返回按钮
-     *
      * @return
      */
     @Override

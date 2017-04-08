@@ -4,6 +4,7 @@ package com.itisi.itisiapp.mvp.ui.main.home;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,11 +18,13 @@ import com.itisi.itisiapp.mvp.ui.read.ReadActivity;
 import com.itisi.itisiapp.mvp.ui.rental.RentalActivity;
 import com.itisi.itisiapp.mvp.ui.select.SelectActivity;
 import com.itisi.itisiapp.utils.SceneAnim;
+import com.itisi.itisiapp.utils.ToastUtil;
 import com.itisi.itisiapp.utils.imageload.ImageLoadConfiguration;
 import com.itisi.itisiapp.utils.imageload.ImageLoadProxy;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -29,13 +32,15 @@ import java.util.List;
 
 import butterknife.BindView;
 
+import static com.itisi.itisiapp.R.id.banner_main;
+
 /**
  * 主页
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeContract.View,View.OnClickListener  {
 
-    @BindView(R.id.banner_main)
+    @BindView(banner_main)
     Banner banner_home;//轮播图
     @BindView(R.id.tv_home_recuit)
     TextView tv_home_recuit;//招聘
@@ -45,6 +50,9 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     TextView tv_home_read;//阅读
     @BindView(R.id.tv_home_select)
     TextView tv_home_select;//微信精选
+
+    @BindView(R.id.rv_home_recruit)// 暂时只做 招聘的列表 以后 再用混合 或者其他
+    RecyclerView rv_home_recruit;
 
     @Override
     public int getLayoutId() {
@@ -63,6 +71,15 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
         tv_home_rental.setOnClickListener(this);
         tv_home_read.setOnClickListener(this);
         tv_home_select.setOnClickListener(this);
+
+
+        banner_home.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int i) {
+                ToastUtil.Success("轮播图 点击位置 :"+i);
+            }
+        });
+
     }
 
     @Override
@@ -90,12 +107,10 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
 
             }
         });
-
         banner_home.setImages(images);
         banner_home.setBannerTitles(titles);
         ////指示器 垂直显示 默认水平显示
         banner_home.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-//        banner_home.start(); // 在onstart 里面开始 播放
     }
 
     @Override
@@ -106,16 +121,19 @@ public class HomeFragment  extends BaseFragment<HomePresenter> implements HomeCo
     public void showContent(List<GankFuLiEntity> list) {
     }
 
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_home_recuit:
-//                startActivity(new Intent(ItisiApp.getInstance(), RecruitActivity.class));
+                //                startActivity(new Intent(ItisiApp.getInstance(), RecruitActivity.class));
                 startActivity(new Intent(ItisiApp.getInstance(), TabAndViewpagerActivity.class));
                 SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
             case R.id.tv_home_rental:
                 startActivity(new Intent(ItisiApp.getInstance(), RentalActivity.class));
+                //                startActivity(new Intent(ItisiApp.getInstance(), TestNoExtendActivity.class));
                 SceneAnim.openActivityByScaleAlpha(getActivity());
                 break;
             case R.id.tv_home_read:

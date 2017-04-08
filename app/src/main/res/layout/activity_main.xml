@@ -4,33 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
 >
-    <!--android:background="@color/colorAccent"-->
-    <!--android:background="@color/blue_btn_bg_color"-->
 
-    <com.mxn.soul.flowingdrawer_core.FlowingDrawer
-    android:id="@+id/drawerlayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    app:edMenuSize="280dp"
-    app:edPosition="1"
-    >
-    <!--android:clipChildren="false"-->
-    <!--android:clipToPadding="false"-->
-
-        <include layout="@layout/right_content"/>
-
-        <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
-            android:id="@+id/fm_Menu"
+        <com.mxn.soul.flowingdrawer_core.FlowingDrawer
+            android:id="@+id/drawerlayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:edMenuSize="280dp"
+            app:edPosition="1"
+        >
+            <include layout="@layout/right_content"/>
+            <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
+                android:id="@+id/fm_Menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <include layout="@layout/left_menu"/>
-
-        </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
-
-</com.mxn.soul.flowingdrawer_core.FlowingDrawer>
-
+            </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
+        </com.mxn.soul.flowingdrawer_core.FlowingDrawer>
 </LinearLayout>

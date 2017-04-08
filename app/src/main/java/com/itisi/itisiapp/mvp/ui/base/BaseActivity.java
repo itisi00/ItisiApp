@@ -47,7 +47,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         mUnbinder = ButterKnife.bind(this);//初始化 ButterKnife
         initView();
         initSwipeBack();//初始化 侧滑返回
-
         initListener();
 
         if (mToolbar != null) {
@@ -67,6 +66,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         initData();//初始化 数据
         Logger.init(); //初始化日志
     }
+
+
     /**
      * 初始化
      */
@@ -74,9 +75,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         mSwipeBackLayout = getSwipeBackLayout();
         //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
-//        mSwipeBackLayout.setEdgeSize(100);//滑动范围???? 如果是那就太好了
-//        这么设置不明显 修改源码 getEdgeTouched
-//        mSwipeBackLayout.setRotationY(50F);
+        //        mSwipeBackLayout.setEdgeSize(100);//滑动范围???? 如果是那就太好了
+        //        这么设置不明显 修改源码 getEdgeTouched
+        //        mSwipeBackLayout.setRotationY(50F);
 
         //        /**
         //         * 获取状态栏高度——方法1
@@ -95,7 +96,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     @Override
     protected void onStart() {
         super.onStart();
-       //判断是否有toolbar 并默认显示返回按钮
+
+
+        //判断是否有toolbar 并默认显示返回按钮
         if (getToolbar() != null && isShowBacking()) {
             showBack();
         }
@@ -139,6 +142,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 是否显示返回按钮
+     *
      * @return
      */
     public boolean isShowBacking() {
@@ -147,6 +151,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 设置toolbar右侧图标
+     *
      * @return
      */
     public int setSubTitleIcon() {
@@ -155,6 +160,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 获取标题控件
+     *
      * @return
      */
     public TextView getTitleView() {
@@ -163,6 +169,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 获取副标题控件
+     *
      * @return
      */
     public TextView getSubTitleView() {
@@ -171,6 +178,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * toolbar的标题 重写即可
+     *
      * @return
      */
     public String setToolbarTitle() {
@@ -202,7 +210,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     /**
      * toolbar右侧view的点击事件 由子类实现
      */
-    protected  void onSubTitleViewClick(){}
+    protected void onSubTitleViewClick() {
+    }
 
     /**
      * 注入
@@ -222,6 +231,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
 
     /**
      * 加载布局文件
+     *
      * @return
      */
     public abstract int getConentlayout();
@@ -232,28 +242,33 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     public void setStatusBarColor() {
         //1. 设置状态栏颜色
         //        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorContent1));
-               // StatusBarUtil.setColor(this, Color.parseColor("#0094ff"));
+        // StatusBarUtil.setColor(this, Color.parseColor("#0094ff"));
         //2. 设置状态栏半透明 0 -255
-         StatusBarUtil.setTranslucent(this, 0);
+        //         StatusBarUtil.setTranslucent(this, 125);
         //3. 设置状态栏 全透明
-                //StatusBarUtil.setTransparent(this); //设置这个 不顶到状态烂
-       // StatusBarUtil.setTransparent(this);
-        //StatusBarUtil.setColorForSwipeBack(this, Color.parseColor("#ff0000"), 0);//设置滑动返回的activity颜色
+//        StatusBarUtil.setTransparent(this); //设置这个 不顶到状态烂
+
+        //设置滑动返回的activity颜色
+        StatusBarUtil.setColorForSwipeBack(this, getResources().getColor(R.color.colorAccent), 112);
     }
 
     /**
      * 初始化其他组件 也行有需要
      */
-    protected void initView() {}
+    protected void initView() {
+    }
 
     /**
      * 初始化事件监听
      */
-    protected void initListener() {}
+    protected void initListener() {
+    }
+
     /**
      * 初始化数据---如果需要加载数据 则去加载数据
      */
-    protected void initData() {}
+    protected void initData() {
+    }
 
     @Override
     protected void onDestroy() {
@@ -263,6 +278,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
         }
         mUnbinder.unbind();
     }
+
     /**
      * 后退键事件
      */
